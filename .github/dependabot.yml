@@ -20,7 +20,7 @@ updates:
           - "minor"
           - "patch"
 
-  # Gradle dependencies
+  # Gradle dependencies + wrapper
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
@@ -123,23 +123,6 @@ updates:
         update-types:
           - "minor"
           - "patch"
-
-  # Gradle wrapper
-  - package-ecosystem: "gradle"
-    directory: "/"
-    schedule:
-      interval: "monthly"
-      day: "monday"
-      time: "06:00"
-    labels:
-      - "dependencies"
-      - "gradle-wrapper"
-    commit-message:
-      prefix: "chore"
-    allow:
-      - dependency-type: "direct"
-        dependency-name: "gradle"
-    groups:
       gradle-wrapper:
         patterns:
           - "gradle"
