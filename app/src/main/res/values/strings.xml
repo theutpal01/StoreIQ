@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">StorIQ</string>
+    <string name="onboarding_title">StorIQ</string>
+    <string name="onboarding_subtitle">Understand your device. Take back your space.</string>
+    <string name="onboarding_privacy_title">Your Privacy Matters</string>
+    <string name="onboarding_privacy_subtitle">Storage analysis happens on your device whenever possible.</string>
+    <string name="onboarding_permission_title">Grant Access to Begin</string>
+    <string name="onboarding_permission_subtitle">We need permission to access your media to analyze storage and find duplicates.</string>
+    <string name="get_started">Get Started</string>
+    <string name="continue_button">Continue</string>
+    <string name="allow_access">Allow Access</string>
+    <string name="skip">Skip</string>
+</resources>

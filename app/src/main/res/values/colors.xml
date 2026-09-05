@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#5E35B1</color>
+    <color name="primary_variant">#7C4DFF</color>
+    <color name="secondary">#1E88E5</color>
+    <color name="secondary_variant">#64B5F6</color>
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#FAFAFA</color>
+    <color name="error">#C62828</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_background">#121212</color>
+    <color name="on_surface">#121212</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="storiq_green">#388E3C</color>
+    <color name="storiq_red">#C62828</color>
+    <color name="storiq_orange">#F57C00</color>
+    <color name="storiq_blue">#1E88E5</color>
+    <color name="storiq_purple">#5E35B1</color>
+    <color name="storiq_teal">#00897B</color>
+</resources>

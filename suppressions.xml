@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions>
+  <!-- Suppress known false positives for StorIQ -->
+
+  <!-- Android SDK transitive dependencies -->
+  <suppress>
+    <notes><![CDATA[Android SDK transitive dependencies - not directly used]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.google\.android@.*</packageUrl>
+    <cpe>cpe:2.3:a:google:android_sdk:*:*:*:*:*:*:*:*</cpe>
+  </suppress>
+
+  <!-- Kotlin stdlib transitive dependencies -->
+  <suppress>
+    <notes><![CDATA[Kotlin stdlib transitive - not directly vulnerable]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.jetbrains\.kotlin@.*</packageUrl>
+    <cpe>cpe:2.3:a:jetbrains:kotlin:*:*:*:*:*:*:*:*</cpe>
+  </suppress>
+
+  <!-- AndroidX transitive dependencies -->
+  <suppress>
+    <notes><![CDATA[AndroidX transitive dependencies]]></notes>
+    <packageUrl regex="true">^pkg:maven/androidx\..*@.*</packageUrl>
+  </suppress>
+
+  <!-- Test dependencies - not shipped to production -->
+  <suppress>
+    <notes><![CDATA[Test-only dependencies]]></notes>
+    <scope>test</scope>
+  </suppress>
+
+  <!-- Android Gradle Plugin transitive -->
+  <suppress>
+    <notes><![CDATA[AGP transitive]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.android\.tools\.build@.*</packageUrl>
+  </suppress>
+
+  <!-- Kotlin serialization - false positive for CVE-2023-xxxx -->
+  <suppress>
+    <notes><![CDATA[Kotlin serialization - CVE in test scope only]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.jetbrains\.kotlinx:kotlinx-serialization.*@.*</packageUrl>
+  </suppress>
+
+  <!-- Room compiler - annotation processor -->
+  <suppress>
+    <notes><![CDATA[Room compiler - annotation processor]]></notes>
+    <packageUrl regex="true">^pkg:maven/androidx\.room:room-compiler@.*</packageUrl>
+  </suppress>
+
+  <!-- Coil - image loading library -->
+  <suppress>
+    <notes><![CDATA[Coil image loading - no known vulns in used version]]></notes>
+    <packageUrl regex="true">^pkg:maven/io\.coil-kt:coil.*@.*</packageUrl>
+  </suppress>
+
+  <!-- Material 3 - UI components -->
+  <suppress>
+    <notes><![CDATA[Material 3 - UI components]]></notes>
+    <packageUrl regex="true">^pkg:maven/androidx\.compose\.material3:material3@.*</packageUrl>
+  </suppress>
+
+  <!-- Navigation Compose -->
+  <suppress>
+    <notes><![CDATA[Navigation Compose]]></notes>
+    <packageUrl regex="true">^pkg:maven/androidx\.navigation:navigation-compose@.*</packageUrl>
+  </suppress>
+
+  <!-- WorkManager -->
+  <suppress>
+    <notes><![CDATA[WorkManager]]></notes>
+    <packageUrl regex="true">^pkg:maven/androidx\.work:work-runtime-ktx@.*</packageUrl>
+  </suppress>
+
+  <!-- DataStore -->
+  <suppress>
+    <notes><![CDATA[DataStore]]></notes>
+    <packageUrl regex="true">^pkg:maven/androidx\.datastore:datastore.*@.*</packageUrl>
+  </suppress>
+
+  <!-- Coroutines -->
+  <suppress>
+    <notes><![CDATA[Coroutines]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.jetbrains\.kotlinx:kotlinx-coroutines.*@.*</packageUrl>
+  </suppress>
+
+  <!-- Lifecycle/ViewModel -->
+  <suppress>
+    <notes><![CDATA[Lifecycle/ViewModel]]></notes>
+    <packageUrl regex="true">^pkg:maven/androidx\.lifecycle:lifecycle.*@.*</packageUrl>
+  </suppress>
+
+  <!-- Hilt/Dagger (if used) -->
+  <suppress>
+    <notes><![CDATA[Hilt/Dagger]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.google\.dagger:hilt.*@.*</packageUrl>
+  </suppress>
+
+  <!-- OkHttp/Okio (Coil transitive) -->
+  <suppress>
+    <notes><![CDATA[OkHttp/Okio - Coil transitive]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.squareup\.okhttp3:okhttp@.*</packageUrl>
+  </suppress>
+
+  <suppress>
+    <notes><![CDATA[Okio - Coil transitive]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.squareup\.okio:okio@.*</packageUrl>
+  </suppress>
+
+</suppressions>

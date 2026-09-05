@@ -1,0 +1,161 @@
+version: 2
+updates:
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Gradle dependencies
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    labels:
+      - "dependencies"
+      - "gradle"
+    commit-message:
+      prefix: "deps"
+    groups:
+      android-gradle-plugin:
+        patterns:
+          - "com.android.tools.build:gradle"
+        update-types:
+          - "minor"
+          - "patch"
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin:*"
+        update-types:
+          - "minor"
+          - "patch"
+      androidx:
+        patterns:
+          - "androidx.*"
+        update-types:
+          - "minor"
+          - "patch"
+      compose:
+        patterns:
+          - "androidx.compose:*"
+        update-types:
+          - "minor"
+          - "patch"
+      room:
+        patterns:
+          - "androidx.room:*"
+        update-types:
+          - "minor"
+          - "patch"
+      lifecycle:
+        patterns:
+          - "androidx.lifecycle:*"
+        update-types:
+          - "minor"
+          - "patch"
+      navigation:
+        patterns:
+          - "androidx.navigation:*"
+        update-types:
+          - "minor"
+          - "patch"
+      workmanager:
+        patterns:
+          - "androidx.work:*"
+        update-types:
+          - "minor"
+          - "patch"
+      datastore:
+        patterns:
+          - "androidx.datastore:*"
+        update-types:
+          - "minor"
+          - "patch"
+      coil:
+        patterns:
+          - "io.coil-kt:*"
+        update-types:
+          - "minor"
+          - "patch"
+      kotlinx:
+        patterns:
+          - "org.jetbrains.kotlinx:*"
+        update-types:
+          - "minor"
+          - "patch"
+      testing:
+        patterns:
+          - "junit:*"
+          - "org.mockito:*"
+          - "org.mockito.kotlin:*"
+          - "androidx.test:*"
+          - "androidx.test.espresso:*"
+          - "androidx.arch.core:*"
+        update-types:
+          - "minor"
+          - "patch"
+      code-quality:
+        patterns:
+          - "io.gitlab.arturbosch.detekt:*"
+          - "org.jlleitschuh.gradle.ktlint:*"
+        update-types:
+          - "minor"
+          - "patch"
+      ksp:
+        patterns:
+          - "com.google.devtools.ksp:*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Gradle wrapper
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "first monday"
+      time: "06:00"
+    labels:
+      - "dependencies"
+      - "gradle-wrapper"
+    commit-message:
+      prefix: "chore"
+    allow:
+      - dependency-type: "direct"
+        dependency-name: "gradle"
+    groups:
+      gradle-wrapper:
+        patterns:
+          - "gradle"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Docker (if used)
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "first monday"
+      time: "06:00"
+    labels:
+      - "dependencies"
+      - "docker"
+    commit-message:
+      prefix: "chore"

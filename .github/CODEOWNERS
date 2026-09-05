@@ -1,0 +1,42 @@
+# CODEOWNERS for StorIQ
+# These users will be automatically requested for review when changes are made to matching files.
+
+# Core architecture - require review for all changes
+/core/                          @android-team @tech-lead
+/app/src/main/java/com/storiq/core/ @android-team @tech-lead
+
+# Feature modules - require feature owner review
+/feature/onboarding/            @android-team
+/feature/dashboard/             @android-team
+/feature/analyzer/              @android-team
+/feature/cleanup/               @android-team
+/feature/duplicates/            @android-team
+/feature/largefiles/            @android-team
+/feature/swipeclean/            @android-team
+/feature/apps/                  @android-team
+/feature/history/               @android-team
+/feature/more/                  @android-team
+
+# Build configuration - require tech lead review
+/*.gradle.kts                   @tech-lead
+/gradle/                        @tech-lead
+/gradle.properties              @tech-lead
+/gradle/libs.versions.toml      @tech-lead
+
+# CI/CD - require DevOps review
+/.github/workflows/             @devops-team @tech-lead
+/.github/dependabot.yml         @tech-lead
+
+# Security-sensitive files - require security review
+/app/src/main/AndroidManifest.xml @security-team @tech-lead
+/app/proguard-rules.pro         @security-team @tech-lead
+/suppressions.xml               @security-team
+
+# Documentation
+/README.md                      @tech-lead
+/docs/                          @tech-lead
+
+# Test configuration - require QA review
+/*Test*.kt                      @qa-team
+/*test*/                        @qa-team
+/androidTest/                   @qa-team
