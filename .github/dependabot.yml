@@ -129,7 +129,7 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-      day: "first monday"
+      day: "monday"
       time: "06:00"
     labels:
       - "dependencies"
@@ -152,7 +152,7 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-      day: "first monday"
+      day: "monday"
       time: "06:00"
     labels:
       - "dependencies"
