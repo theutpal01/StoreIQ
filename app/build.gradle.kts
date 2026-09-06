@@ -140,8 +140,8 @@ tasks.withType<org.gradle.testing.jacoco.tasks.JacocoReport> {
 
 // Detekt Configuration
 tasks.named<io.gitlab.arturbosch.detekt.Detekt>("detekt") {
-    config = files("$projectDir/../../detekt.yml")
-    baseline = file("$projectDir/../../detekt-baseline.xml")
+    config = files("$projectDir/../detekt.yml")
+    baseline = file("$projectDir/../detekt-baseline.xml")
     buildUponDefaultConfig = true
     reports {
         html {
