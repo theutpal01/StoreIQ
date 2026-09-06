@@ -130,15 +130,4 @@ updates:
           - "minor"
           - "patch"
 
-  # Docker (if used)
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "monthly"
-      day: "monday"
-      time: "06:00"
-    labels:
-      - "dependencies"
-      - "docker"
-    commit-message:
-      prefix: "chore"
+  
