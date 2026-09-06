@@ -328,7 +328,7 @@ jobs:
           gradle-version: ${{ env.GRADLE_VERSION }}
 
       - name: Download Release Bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: app-release-bundle
           path: app/build/outputs/bundle/release/
