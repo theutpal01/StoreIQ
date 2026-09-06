@@ -1,11 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
+    id("org.jetbrains.kotlin.kapt")
     alias(libs.plugins.detekt)
-    alias(libs.plugins.ktlint)
-    alias(libs.plugins.jacoco)
 }
 
 android {
@@ -80,7 +78,7 @@ dependencies {
     // Compose Material 3
     implementation(libs.androidx.compose.bom)
     implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.material3.window.size.class)
+    implementation(libs.androidx.compose.material3.window.size)
 
     // Navigation
     implementation(libs.androidx.navigation.compose)
@@ -89,7 +87,9 @@ dependencies {
     // Room Database
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
+    configurations.named("kapt") {
+    dependencies.add(project.dependencies.create("androidx.room:room-compiler:2.6.1"))
+}
 
     // DataStore
     implementation(libs.androidx.datastore.preferences)
@@ -132,15 +132,10 @@ dependencies {
 // Jacoco Coverage
 tasks.withType<org.gradle.testing.jacoco.tasks.JacocoReport> {
     reports {
-        html.isEnabled = true
-        xml.isEnabled = true
-        csv.isEnabled = false
+        html.required.set(true)
+        xml.required.set(true)
+        csv.required.set(false)
     }
-}
-
-tasks.named<org.gradle.testing.jacoco.tasks.JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
-    executionData(tasks.named("testDebugUnitTest"))
 }
 
 // Detekt Configuration
@@ -150,37 +145,22 @@ tasks.named<io.gitlab.arturbosch.detekt.Detekt>("detekt") {
     buildUponDefaultConfig = true
     reports {
         html {
-            isEnabled = true
+            required.set(true)
             destination = file("$buildDir/reports/detekt/detekt.html")
         }
         xml {
-            isEnabled = true
+            required.set(true)
             destination = file("$buildDir/reports/detekt/detekt.xml")
         }
         txt {
-            isEnabled = true
+            required.set(true)
             destination = file("$buildDir/reports/detekt/detekt.txt")
         }
         sarif {
-            isEnabled = true
+            required.set(true)
             destination = file("$buildDir/reports/detekt/detekt.sarif")
         }
     }
-}
-
-// Ktlint Configuration
-tasks.named<org.jlleitschuh.gradle.ktlint.KtLintCheck>("ktlintCheck") {
-    reporter {
-        reporterType = "plain"
-    }
-    outputToConsole = true
-}
-
-tasks.named<org.jlleitschuh.gradle.ktlint.KtLintFormat>("ktlintFormat") {
-    reporter {
-        reporterType = "plain"
-    }
-    outputToConsole = true
 }
 
 // Android Lint Configuration
@@ -201,3 +181,4 @@ android {
         baseline = file("$projectDir/../../lint-baseline.xml")
     }
 }
+
