@@ -219,7 +219,7 @@ fun GrowthSummaryCard(
                 }
 
                 Text(
-                    text = "${StorageBreakdown.formatBytes(growth.absoluteValue)} (${String.format("%.1f", growthPercent.absoluteValue)}%)",
+                    text = "${StorageBreakdown.formatBytes(growth.absoluteValue)} (${"%.1f".format(growthPercent.absoluteValue)}%)",
                     style = Typography.displayMedium.copy(fontWeight = FontWeight.Bold, color = growthColor)
                 )
 

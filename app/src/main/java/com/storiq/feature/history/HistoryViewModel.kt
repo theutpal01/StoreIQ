@@ -2,8 +2,6 @@ package com.storiq.feature.history
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.storiq.core.model.MediaCategory
-import com.storiq.core.model.StorageBreakdown
 import com.storiq.core.model.StorageSnapshot
 import com.storiq.core.storage.StorageRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,10 +15,10 @@ class HistoryViewModel(
     private val _snapshots = MutableStateFlow<List<StorageSnapshot>>(emptyList())
     val snapshots = _snapshots.distinctUntilChanged()
 
-    private val _isLoading = MutableStateFlow<Boolean>(false)
+    private val _isLoading = MutableStateFlow(false)
     val isLoading = _isLoading.distinctUntilChanged()
 
-    private val _timeRange = MutableStateFlow<TimeRange>(TimeRange.LAST_30_DAYS)
+    private val _timeRange = MutableStateFlow(TimeRange.LAST_30_DAYS)
     val timeRange = _timeRange.distinctUntilChanged()
 
     init {
@@ -39,13 +37,13 @@ class HistoryViewModel(
                     TimeRange.LAST_365_DAYS -> endTime - 365 * 24 * 60 * 60 * 1000L
                     TimeRange.ALL_TIME -> 0
                 }
-                
-                val snapshots = if (startTime == 0) {
+
+                val snapshots = if (startTime == 0L) {
                     repository.getStorageHistory(1000)
                 } else {
                     repository.getStorageHistoryRange(startTime, endTime)
                 }
-                
+
                 _snapshots.value = snapshots
             } catch (e: Exception) {
                 // Handle error
@@ -103,17 +101,12 @@ class HistoryViewModel(
             return null
         }
 
-    enum class TimeRange {
+    enum class TimeRange(val label: String) {
         LAST_7_DAYS("Last 7 days"),
         LAST_30_DAYS("Last 30 days"),
         LAST_90_DAYS("Last 90 days"),
         LAST_365_DAYS("Last year"),
-        ALL_TIME("All time")
-
-        val label: String
-        TimeRange(label: String) {
-            this.label = label
-        }
+        ALL_TIME("All time");
     }
 
     data class ChartDataPoint(
@@ -137,5 +130,5 @@ class HistoryViewModel(
                 docsGB = snapshot.documentsBytes / (1024f * 1024 * 1024),
                 otherGB = snapshot.otherBytes / (1024f * 1024 * 1024)
             )
-        }.reversed() // Oldest first for chart
+        }.reversed()
 }

@@ -1,19 +1,31 @@
 package com.storiq.feature.onboarding.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,13 +37,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.dp
-import com.storiq.core.model.ScanSession
-import com.storiq.core.model.ScanStatus
 import com.storiq.core.model.ScanType
 import com.storiq.core.storage.StorageRepository
 import com.storiq.core.storage.StorageRepositoryImpl
-import kotlinx.coroutines.launch
+import com.storiq.core.ui.theme.StorIQGreen
+import com.storiq.core.ui.theme.StorIQRed
 
 @Composable
 fun InitialScanScreen(
@@ -40,7 +50,7 @@ fun InitialScanScreen(
 ) {
     var scanResult by remember { mutableStateOf<StorageRepositoryImpl.FullScanResult?>(null) }
     var currentStep by remember { mutableStateOf(0) }
-    var stepProgress by remember { mutableStateOf<Float>(0f) }
+    var stepProgress by remember { mutableStateOf(0f) }
 
     val steps = remember {
         listOf(
@@ -51,7 +61,7 @@ fun InitialScanScreen(
         )
     }
 
-    androidx.compose.runtime.LaunchedEffect(Unit) {
+    LaunchedEffect(Unit) {
         val result = repository.performFullScan()
         scanResult = result
     }
@@ -62,30 +72,27 @@ fun InitialScanScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (scanResult == null) {
-            // Show scanning progress
             Column(
                 verticalArrangement = Arrangement.spacedBy(32.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = "Analyzing your device...",
-                    style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
+                    style = MaterialTheme.typography.headlineMedium,
                     textAlign = TextAlign.Center
                 )
 
-                // Overall progress
                 Column(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     LinearProgressIndicator(
                         progress = (currentStep.toFloat() + stepProgress) / steps.size,
-                        color = com.storiq.core.ui.theme.StorIQGreen,
-                        trackColor = com.storiq.core.ui.theme.StorIQGreen.copy(alpha = 0.2f),
+                        color = StorIQGreen,
+                        trackColor = StorIQGreen.copy(alpha = 0.2f),
                         modifier = Modifier.height(8.dp)
                     )
 
-                    // Step progress
                     Column(
                         modifier = Modifier.fillMaxWidth(),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -99,119 +106,110 @@ fun InitialScanScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                // Step icon
-                                androidx.compose.foundation.layout.Box(
+                                Box(
                                     modifier = Modifier
                                         .size(24.dp)
                                         .background(
-                                            color = if (isCompleted) com.storiq.core.ui.theme.StorIQGreen else 
-                                                    if (isCurrent) com.storiq.core.ui.theme.StorIQGreen.copy(alpha = 0.5f) else Color.LightGray,
-                                            shape = androidx.compose.foundation.shape.CircleShape
+                                            color = if (isCompleted) StorIQGreen else
+                                                    if (isCurrent) StorIQGreen.copy(alpha = 0.5f) else Color.LightGray,
+                                            shape = CircleShape
                                         )
                                 ) {
                                     if (isCompleted) {
-                                        androidx.compose.material.Icon(
-                                            imageVector = androidx.compose.material.icons.Icons.Filled.Check,
+                                        Icon(
+                                            imageVector = Icons.Filled.Check,
                                             contentDescription = null,
                                             tint = Color.White,
                                             modifier = Modifier.size(16.dp).align(Alignment.Center)
                                         )
                                     } else if (isCurrent) {
                                         CircularProgressIndicator(
-                                            color = com.storiq.core.ui.theme.StorIQGreen,
+                                            color = StorIQGreen,
                                             modifier = Modifier.size(16.dp).align(Alignment.Center)
                                         )
                                     }
                                 }
 
-                                androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(16.dp))
+                                Spacer(modifier = Modifier.width(16.dp))
 
-                                // Step label and progress
                                 Column(
                                     modifier = Modifier.weight(1f),
                                     verticalArrangement = Arrangement.Center
                                 ) {
                                     Text(
                                         text = step.title,
-                                        style = androidx.compose.material3.MaterialTheme.typography.bodyLarge,
+                                        style = MaterialTheme.typography.bodyLarge,
                                         fontWeight = if (isCurrent) FontWeight.SemiBold else FontWeight.Normal,
-                                        color = if (isCurrent || isCompleted) com.storiq.core.ui.theme.StorIQGreen else androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant
+                                        color = if (isCurrent || isCompleted) StorIQGreen else MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                     LinearProgressIndicator(
                                         progress = progress,
-                                        color = com.storiq.core.ui.theme.StorIQGreen,
-                                        trackColor = com.storiq.core.ui.theme.StorIQGreen.copy(alpha = 0.2f),
+                                        color = StorIQGreen,
+                                        trackColor = StorIQGreen.copy(alpha = 0.2f),
                                         modifier = Modifier.height(4.dp)
                                     )
                                 }
                             }
                         }
                     }
-                )
+                }
             }
         } else {
-            // Show result
             Column(
                 verticalArrangement = Arrangement.spacedBy(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (scanResult!!.success) {
-                    androidx.compose.foundation.layout.Box(
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        androidx.compose.material.Icon(
-                            imageVector = androidx.compose.material.icons.Icons.Filled.CheckCircle,
+                    Box(modifier = Modifier.size(80.dp)) {
+                        Icon(
+                            imageVector = Icons.Filled.CheckCircle,
                             contentDescription = null,
-                            tint = com.storiq.core.ui.theme.StorIQGreen,
+                            tint = StorIQGreen,
                             modifier = Modifier.size(80.dp)
                         )
                     }
                     Text(
                         text = "Analysis Complete!",
-                        style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
+                        style = MaterialTheme.typography.headlineMedium,
                         textAlign = TextAlign.Center
                     )
                     Text(
                         text = "Found ${scanResult!!.mediaScanned} media files, ${scanResult!!.filesScanned} documents, ${scanResult!!.appsScanned} apps",
-                        style = androidx.compose.material3.MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.bodyLarge,
                         textAlign = TextAlign.Center,
-                        color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         text = "Completed in ${scanResult!!.durationMs / 1000}s",
-                        style = androidx.compose.material3.MaterialTheme.typography.bodyMedium,
-                        color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 } else {
-                    androidx.compose.foundation.layout.Box(
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        androidx.compose.material.Icon(
-                            imageVector = androidx.compose.material.icons.Icons.Filled.Error,
+                    Box(modifier = Modifier.size(80.dp)) {
+                        Icon(
+                            imageVector = Icons.Filled.Error,
                             contentDescription = null,
-                            tint = com.storiq.core.ui.theme.StorIQRed,
+                            tint = StorIQRed,
                             modifier = Modifier.size(80.dp)
                         )
                     }
                     Text(
                         text = "Scan Failed",
-                        style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
+                        style = MaterialTheme.typography.headlineMedium,
                         textAlign = TextAlign.Center,
-                        color = com.storiq.core.ui.theme.StorIQRed
+                        color = StorIQRed
                     )
                     Text(
                         text = scanResult!!.errorMessage ?: "Unknown error",
-                        style = androidx.compose.material3.MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.bodyLarge,
                         textAlign = TextAlign.Center,
-                        color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
 
                 Button(
                     onClick = { onScanComplete(scanResult!!) },
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = com.storiq.core.ui.theme.StorIQGreen
-                    ),
+                    colors = ButtonDefaults.buttonColors(containerColor = StorIQGreen),
                     modifier = Modifier.padding(horizontal = 32.dp)
                 ) {
                     Text(

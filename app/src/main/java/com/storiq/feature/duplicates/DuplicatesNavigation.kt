@@ -9,13 +9,13 @@ fun NavGraphBuilder.duplicatesGraph(storageRepository: StorageRepository) {
     composable("duplicates") {
         DuplicatesScreen(
             viewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-                factory = DuplicatesViewModel.Factory(storageRepository)
+                factory = DuplicatesViewModelFactory(storageRepository)
             )
         )
     }
 }
 
-class DuplicatesViewModel.Factory(
+class DuplicatesViewModelFactory(
     private val repository: StorageRepository
 ) : androidx.lifecycle.ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")

@@ -10,20 +10,20 @@ fun NavGraphBuilder.swipeCleanGraph(storageRepository: StorageRepository) {
     composable("swipe_clean") {
         SwipeCleanGalleryScreen(
             viewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-                factory = SwipeCleanViewModel.Factory(storageRepository)
+                factory = SwipeCleanViewModelFactory(storageRepository)
             )
         )
     }
     composable("swipe_clean_review") {
         SwipeCleanReviewScreen(
             viewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-                factory = SwipeCleanViewModel.Factory(storageRepository)
+                factory = SwipeCleanViewModelFactory(storageRepository)
             )
         )
     }
 }
 
-class SwipeCleanViewModel.Factory(
+class SwipeCleanViewModelFactory(
     private val repository: StorageRepository
 ) : androidx.lifecycle.ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")

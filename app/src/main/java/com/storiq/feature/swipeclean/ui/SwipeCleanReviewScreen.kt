@@ -1,49 +1,62 @@
 package com.storiq.feature.swipeclean.ui
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Image
+import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.dp
 import com.storiq.core.model.MediaRecord
-import com.storiq.core.model.SwipeDecision
+import com.storiq.core.model.StorageBreakdown
+import com.storiq.core.ui.theme.StorIQBlue
 import com.storiq.core.ui.theme.StorIQGreen
+import com.storiq.core.ui.theme.StorIQPurple
 import com.storiq.core.ui.theme.StorIQRed
+import com.storiq.core.ui.theme.StorIQTeal
 import com.storiq.core.ui.theme.Typography
-import com.storiq.core.ui.theme.Color
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.SelectAll
-import androidx.compose.foundation.layout.Offset
 
 @Composable
 fun SwipeCleanReviewScreen(
@@ -60,10 +73,9 @@ fun SwipeCleanReviewScreen(
     val videosCount = deleteCandidates.count { it.mimeType.startsWith("video/") }
 
     var selectAll by remember { mutableStateOf(false) }
-    var individualSelection by remember { mutableStateOf(mutableMapOf<String, Boolean>()) }
+    val individualSelection = remember { mutableStateMapOf<String, Boolean>() }
 
-    // Initialize selection
-    androidx.compose.runtime.LaunchedEffect(deleteCandidates) {
+    LaunchedEffect(deleteCandidates) {
         individualSelection.clear()
         deleteCandidates.forEach { individualSelection[it.uri] = true }
     }
@@ -73,7 +85,6 @@ fun SwipeCleanReviewScreen(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
-            // Header
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -107,11 +118,10 @@ fun SwipeCleanReviewScreen(
                             color = Color.Gray
                         )
                     }
-                    Box(modifier = Modifier.width(48.dp)) // Balance
+                    Box(modifier = Modifier.width(48.dp))
                 }
             }
 
-            // Stats row
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -122,13 +132,12 @@ fun SwipeCleanReviewScreen(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    StatItem("Photos", photosCount, Icons.Filled.Image, Color.StorIQTeal)
-                    StatItem("Videos", videosCount, Icons.Filled.Videocam, Color.StorIQBlue)
+                    StatItem("Photos", photosCount, Icons.Filled.Image, StorIQTeal)
+                    StatItem("Videos", videosCount, Icons.Filled.Videocam, StorIQBlue)
                     StatItem("Potential Recovery", StorageBreakdown.formatBytes(selectedSize), Icons.Filled.Delete, StorIQGreen)
                 }
             }
 
-            // Selection controls
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -151,8 +160,8 @@ fun SwipeCleanReviewScreen(
                                 deleteCandidates.forEach { individualSelection[it.uri] = true }
                             }
                         },
-                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                            containerColor = if (selectAll) StorIQRed else Color.StorIQPurple
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (selectAll) StorIQRed else StorIQPurple
                         ),
                         modifier = Modifier.weight(1f).height(40.dp)
                     ) {
@@ -163,18 +172,17 @@ fun SwipeCleanReviewScreen(
                         )
                     }
                 }
-            )
+            }
 
-            // Grid preview
             LazyVerticalGrid(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
                     .weight(1f),
-                cells = GridCells.Fixed(3),
+                columns = GridCells.Fixed(3),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 100.dp)
+                contentPadding = PaddingValues(bottom = 100.dp)
             ) {
                 items(deleteCandidates) { media ->
                     ReviewGridItem(
@@ -182,20 +190,12 @@ fun SwipeCleanReviewScreen(
                         isSelected = individualSelection[media.uri] ?: true,
                         onSelectionChange = { selected ->
                             individualSelection[media.uri] = selected
-                            if (selected) {
-                                // Keep in delete candidates
-                            } else {
-                                // Remove from delete candidates - would need viewModel method
-                            }
                         },
-                        onClick = {
-                            // Open fullscreen preview
-                        }
+                        onClick = {}
                     )
                 }
             }
 
-            // Bottom action bar
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -204,9 +204,7 @@ fun SwipeCleanReviewScreen(
             ) {
                 Button(
                     onClick = { viewModel.confirmDeletion() },
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = StorIQRed
-                    ),
+                    colors = ButtonDefaults.buttonColors(containerColor = StorIQRed),
                     modifier = Modifier.fillMaxWidth().height(56.dp)
                 ) {
                     Row(
@@ -220,7 +218,7 @@ fun SwipeCleanReviewScreen(
                             tint = Color.White,
                             modifier = Modifier.size(24.dp)
                         )
-                        androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(12.dp))
+                        Spacer(modifier = Modifier.width(12.dp))
                         Text(
                             text = "Remove $selectedCount items (${StorageBreakdown.formatBytes(selectedSize)})",
                             fontWeight = FontWeight.SemiBold,
@@ -238,7 +236,7 @@ fun SwipeCleanReviewScreen(
 fun StatItem(
     label: String,
     value: Any,
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    icon: ImageVector,
     color: Color
 ) {
     Column(
@@ -251,7 +249,7 @@ fun StatItem(
                 .size(40.dp)
                 .background(
                     color = color.copy(alpha = 0.15f),
-                    shape = androidx.compose.foundation.shape.CircleShape
+                    shape = CircleShape
                 )
         ) {
             Icon(
@@ -261,7 +259,7 @@ fun StatItem(
                 modifier = Modifier.size(20.dp).align(Alignment.Center)
             )
         }
-        androidx.compose.foundation.layout.Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = value.toString(),
             style = Typography.titleMedium,
@@ -294,14 +292,13 @@ fun ReviewGridItem(
         shape = RoundedCornerShape(12.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-            // Media content
             if (isVideo) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.Black)
                 ) {
-                    androidx.compose.material.Icon(
+                    Icon(
                         imageVector = Icons.Filled.Videocam,
                         contentDescription = null,
                         tint = Color.White.copy(alpha = 0.5f),
@@ -333,7 +330,7 @@ fun ReviewGridItem(
                         .fillMaxSize()
                         .background(Color.Gray)
                 ) {
-                    androidx.compose.material.Icon(
+                    Icon(
                         imageVector = Icons.Filled.Image,
                         contentDescription = null,
                         tint = Color.White.copy(alpha = 0.5f),
@@ -342,7 +339,6 @@ fun ReviewGridItem(
                 }
             }
 
-            // Selection overlay
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -355,18 +351,19 @@ fun ReviewGridItem(
                         .size(32.dp)
                         .align(Alignment.TopEnd)
                         .padding(8.dp)
+                        .clickable { onSelectionChange(!isSelected) }
                 ) {
                     Box(
                         modifier = Modifier
                             .size(28.dp)
                             .background(
                                 color = if (isSelected) StorIQRed else Color.White,
-                                shape = androidx.compose.foundation.shape.CircleShape
+                                shape = CircleShape
                             )
                             .border(
                                 width = 2.dp,
                                 color = if (isSelected) StorIQRed else Color.LightGray,
-                                shape = androidx.compose.foundation.shape.CircleShape
+                                shape = CircleShape
                             )
                     ) {
                         if (isSelected) {
@@ -381,7 +378,6 @@ fun ReviewGridItem(
                 }
             }
 
-            // File size badge
             Box(
                 modifier = Modifier
                     .padding(8.dp)

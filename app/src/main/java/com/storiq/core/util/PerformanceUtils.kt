@@ -5,14 +5,9 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
-import android.os.Build
-import android.provider.MediaStore
 import android.util.Size
 import androidx.annotation.WorkerThread
-import com.storiq.core.util.CoroutineDispatcherProvider
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.InputStream
 
 object PerformanceUtils {
 
@@ -68,7 +63,7 @@ object PerformanceUtils {
     }
 
     private fun rotateBitmapIfNeeded(bitmap: Bitmap?, uri: Uri, context: android.content.Context): Bitmap? {
-        bitmap?.let { bmp ->
+        return bitmap?.let { bmp ->
             try {
                 val inputStream = context.contentResolver.openInputStream(uri)
                 inputStream?.use { stream ->
@@ -84,11 +79,11 @@ object PerformanceUtils {
                         return Bitmap.createBitmap(bmp, 0, 0, bmp.width, bmp.height, matrix, true)
                     }
                 }
+            } catch (e: Exception) {
+                // Ignore rotation errors
             }
-        } catch (e: Exception) {
-            // Ignore rotation errors
+            bmp
         }
-        bitmap
     }
 
     suspend fun computeFileHash(

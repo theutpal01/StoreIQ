@@ -9,13 +9,13 @@ fun NavGraphBuilder.largeFilesGraph(storageRepository: StorageRepository) {
     composable("large_files") {
         LargeFilesScreen(
             viewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-                factory = LargeFilesViewModel.Factory(storageRepository)
+                factory = LargeFilesViewModelFactory(storageRepository)
             )
         )
     }
 }
 
-class LargeFilesViewModel.Factory(
+class LargeFilesViewModelFactory(
     private val repository: StorageRepository
 ) : androidx.lifecycle.ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")

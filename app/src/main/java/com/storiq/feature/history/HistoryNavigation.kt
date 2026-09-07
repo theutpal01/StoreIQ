@@ -9,13 +9,13 @@ fun NavGraphBuilder.historyGraph(storageRepository: StorageRepository) {
     composable("history") {
         HistoryScreen(
             viewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-                factory = HistoryViewModel.Factory(storageRepository)
+                factory = HistoryViewModelFactory(storageRepository)
             )
         )
     }
 }
 
-class HistoryViewModel.Factory(
+class HistoryViewModelFactory(
     private val repository: StorageRepository
 ) : androidx.lifecycle.ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")

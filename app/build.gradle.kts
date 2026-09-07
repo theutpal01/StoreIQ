@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
-    id("org.jetbrains.kotlin.kapt")
+    id("com.google.devtools.ksp")
     alias(libs.plugins.detekt)
 }
 
@@ -44,10 +44,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
         freeCompilerArgs += listOf(
-            "-Xopt-in=kotlin.RequiresOptIn",
-            "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-            "-Xopt-in=androidx.lifecycle.ExperimentalLifecycleApi",
-            "-Xopt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+            "-opt-in=kotlin.RequiresOptIn",
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+            "-opt-in=androidx.lifecycle.ExperimentalLifecycleApi",
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
         )
     }
 
@@ -60,10 +60,30 @@ android {
         kotlinCompilerExtensionVersion = "1.5.11"
     }
 
-    packagingOptions {
-        resources {
-            excludes += listOf("META-INF/*.kotlin_module")
+    sourceSets {
+        getByName("main") {
+            kotlin.setSrcDirs(listOf("src/main/java"))
         }
+        getByName("test") {
+            kotlin.setSrcDirs(listOf("src/test/java"))
+        }
+        getByName("androidTest") {
+            kotlin.setSrcDirs(listOf("src/androidTest/java"))
+        }
+    }
+
+    lint {
+        abortOnError = false
+        checkReleaseBuilds = true
+        warningsAsErrors = false
+        htmlReport = true
+        xmlReport = true
+        htmlOutput = layout.buildDirectory.file("reports/lint/lint-results.html").get().asFile
+        xmlOutput = layout.buildDirectory.file("reports/lint/lint-results.xml").get().asFile
+        disable += "MissingTranslation"
+        disable += "ExtraTranslation"
+        disable += "UnusedResources"
+        baseline = file("$projectDir/../../lint-baseline.xml")
     }
 }
 
@@ -94,9 +114,7 @@ dependencies {
     // Room Database
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    configurations.named("kapt") {
-    dependencies.add(project.dependencies.create("androidx.room:room-compiler:2.6.1"))
-}
+    ksp("androidx.room:room-compiler:2.6.1")
 
     // DataStore
     implementation(libs.androidx.datastore.preferences)
@@ -149,39 +167,19 @@ tasks.named<io.gitlab.arturbosch.detekt.Detekt>("detekt") {
     reports {
         html {
             required.set(true)
-            destination = file("$buildDir/reports/detekt/detekt.html")
+            outputLocation.set(layout.buildDirectory.file("reports/detekt/detekt.html"))
         }
         xml {
             required.set(true)
-            destination = file("$buildDir/reports/detekt/detekt.xml")
+            outputLocation.set(layout.buildDirectory.file("reports/detekt/detekt.xml"))
         }
         txt {
             required.set(true)
-            destination = file("$buildDir/reports/detekt/detekt.txt")
+            outputLocation.set(layout.buildDirectory.file("reports/detekt/detekt.txt"))
         }
         sarif {
             required.set(true)
-            destination = file("$buildDir/reports/detekt/detekt.sarif")
+            outputLocation.set(layout.buildDirectory.file("reports/detekt/detekt.sarif"))
         }
     }
 }
-
-// Android Lint Configuration
-android {
-    lintOptions {
-        isAbortOnError = false
-        isCheckReleaseBuilds = true
-        isWarningsAsErrors = false
-        htmlReport = true
-        xmlReport = true
-        htmlOutput = file("$buildDir/reports/lint/lint-results.html")
-        xmlOutput = file("$buildDir/reports/lint/lint-results.xml")
-    }
-    lint {
-        disable += "MissingTranslation"
-        disable += "ExtraTranslation"
-        disable += "UnusedResources"
-        baseline = file("$projectDir/../../lint-baseline.xml")
-    }
-}
-

@@ -22,13 +22,13 @@ class LargeFilesViewModel(
     private val _sizeGroups = MutableStateFlow<List<SizeGroup>>(emptyList())
     val sizeGroups = _sizeGroups.distinctUntilChanged()
 
-    private val _selectedSort = MutableStateFlow<SortOption>(SortOption.SIZE_DESC)
+    private val _selectedSort = MutableStateFlow(SortOption.SIZE_DESC)
     val selectedSort = _selectedSort.distinctUntilChanged()
 
     private val _selectedGroup = MutableStateFlow<SizeGroupFilter?>(null)
     val selectedGroup = _selectedGroup.distinctUntilChanged()
 
-    private val _isLoading = MutableStateFlow<Boolean>(false)
+    private val _isLoading = MutableStateFlow(false)
     val isLoading = _isLoading.distinctUntilChanged()
 
     init {
@@ -72,12 +72,10 @@ class LargeFilesViewModel(
     private fun applyFilters() {
         var files = _allFiles.value
 
-        // Filter by group
         _selectedGroup.value?.let { group ->
             files = files.filter { it.sizeBytes in group.range }
         }
 
-        // Sort
         files = when (_selectedSort.value) {
             SortOption.SIZE_DESC -> files.sortedByDescending { it.sizeBytes }
             SortOption.SIZE_ASC -> files.sortedBy { it.sizeBytes }
@@ -105,39 +103,33 @@ class LargeFilesViewModel(
             val groupFiles = files.filter { it.sizeBytes in range.range }
             if (groupFiles.isNotEmpty()) {
                 val totalSize = groupFiles.sumOf { it.sizeBytes }
-                groups.add(SizeGroup(
-                    filter = range,
-                    count = groupFiles.size,
-                    totalSize = totalSize,
-                    files = groupFiles
-                ))
+                groups.add(
+                    SizeGroup(
+                        filter = range,
+                        count = groupFiles.size,
+                        totalSize = totalSize,
+                        files = groupFiles
+                    )
+                )
             }
         }
 
         _sizeGroups.value = groups
     }
 
-    fun selectFile(uri: String, selected: Boolean) {
-        // Selection handled by UI state
-    }
+    fun selectFile(uri: String, selected: Boolean) {}
 
     fun getSelectedFiles(): List<MediaRecord> {
-        // Return selected files - would need selection state
         return emptyList()
     }
 
-    enum class SortOption {
+    enum class SortOption(val label: String) {
         SIZE_DESC("Size ↓"),
         SIZE_ASC("Size ↑"),
         DATE_DESC("Date ↓"),
         DATE_ASC("Date ↑"),
         TYPE("Type"),
-        NAME("Name")
-
-        val label: String
-        SortOption(label: String) {
-            this.label = label
-        }
+        NAME("Name");
     }
 
     data class SizeGroupFilter(

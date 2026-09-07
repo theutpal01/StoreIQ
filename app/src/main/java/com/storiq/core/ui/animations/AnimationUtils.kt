@@ -1,11 +1,11 @@
 package com.storiq.core.ui.animations
 
-import androidx.compose.animation.animateFloatAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 
@@ -84,40 +84,10 @@ object AnimationUtils {
         return Pair(alpha, translation)
     }
 
-    @Composable
-    fun animateFadeIn(
-        visible: Boolean,
-        delay: Int = 0,
-        duration: Int = 300
-    ): Float {
-        return animateFloatAsState(
-            targetValue = if (visible) 1f else 0f,
-            animationSpec = tween(duration, delayMillis = delay)
-        ).value
-    }
-
-    @Composable
-    fun animateSlideIn(
-        visible: Boolean,
-        direction: SlideDirection = SlideDirection.BOTTOM,
-        delay: Int = 0,
-        duration: Int = 300
-    ): Float {
-        return animateFloatAsState(
-            targetValue = if (visible) 0f else direction.offset,
-            animationSpec = tween(duration, delayMillis = delay)
-        ).value
-    }
-
-    enum class SlideDirection {
+    enum class SlideDirection(val offset: Float) {
         TOP(-300f),
         BOTTOM(300f),
         LEFT(-300f),
-        RIGHT(300f)
-
-        val offset: Float
-        SlideDirection(offset: Float) {
-            this.offset = offset
-        }
+        RIGHT(300f);
     }
 }
