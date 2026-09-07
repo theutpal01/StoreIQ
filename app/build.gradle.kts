@@ -76,7 +76,7 @@ dependencies {
     implementation(libs.androidx.window)
 
     // Compose Material 3
-    implementation(libs.androidx.compose.bom)
+    implementation(enforcedPlatform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.window.size)
 
