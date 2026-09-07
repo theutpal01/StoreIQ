@@ -15,16 +15,16 @@ interface DuplicateGroupDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(group: DuplicateGroup): Long
 
-    @Query("SELECT * FROM duplicate_groups ORDER BY totalWastedBytes DESC")
+    @Query("SELECT * FROM duplicate_groups ORDER BY (sizeBytes * (count - 1)) DESC")
     suspend fun getAllSortedByWastedSpace(): List<DuplicateGroup>
 
-    @Query("SELECT * FROM duplicate_groups WHERE category = :category ORDER BY totalWastedBytes DESC")
+    @Query("SELECT * FROM duplicate_groups WHERE category = :category ORDER BY (sizeBytes * (count - 1)) DESC")
     suspend fun getByCategory(category: com.storiq.core.model.MediaCategory): List<DuplicateGroup>
 
     @Query("SELECT * FROM duplicate_groups WHERE scanSessionId = :sessionId")
     suspend fun getByScanSession(sessionId: Long): List<DuplicateGroup>
 
-    @Query("SELECT SUM(totalWastedBytes) FROM duplicate_groups")
+    @Query("SELECT SUM(sizeBytes * (count - 1)) FROM duplicate_groups")
     suspend fun getTotalWastedSpace(): Long?
 
     @Query("SELECT COUNT(*) FROM duplicate_groups")

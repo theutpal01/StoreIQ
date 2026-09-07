@@ -108,17 +108,14 @@ fun StorIQNavHost(navController: NavController, storageRepository: StorageReposi
     val dashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
         factory = DashboardViewModel.Factory(storageRepository)
     )
-    val swipeCleanViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-        factory = SwipeCleanViewModel.Factory(storageRepository)
-    )
     val historyViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-        factory = HistoryViewModel.Factory(storageRepository)
+        factory = HistoryViewModelFactory(storageRepository)
     )
     val largeFilesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-        factory = LargeFilesViewModel.Factory(storageRepository)
+        factory = LargeFilesViewModelFactory(storageRepository)
     )
     val duplicatesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-        factory = DuplicatesViewModel.Factory(storageRepository)
+        factory = DuplicatesViewModelFactory(storageRepository)
     )
     NavHost(navController, startDestination = "dashboard") {
         composable("dashboard") {
@@ -127,7 +124,7 @@ fun StorIQNavHost(navController: NavController, storageRepository: StorageReposi
                 onNavigateToAnalyze = { navController.navigate("analyze") },
                 onNavigateToClean = { navController.navigate("clean") },
                 onNavigateToApps = { navController.navigate("apps") },
-                onNavigateToSwipeClean = { navController.navigate("swipe_clean") },
+                // onNavigateToSwipeClean = { navController.navigate("swipe_clean") }, // TODO: Fix SwipeClean feature
                 onNavigateToLargeFiles = { navController.navigate("large_files") },
                 onNavigateToDuplicates = { navController.navigate("duplicates") }
             )
@@ -144,7 +141,7 @@ fun StorIQNavHost(navController: NavController, storageRepository: StorageReposi
         composable("more") {
             MoreScreen(
                 onNavigateToHistory = { navController.navigate("history") },
-                onNavigateToSwipeClean = { navController.navigate("swipe_clean") },
+                // onNavigateToSwipeClean = { navController.navigate("swipe_clean") }, // TODO: Fix SwipeClean feature
                 onNavigateToFileExplorer = { navController.navigate("file_explorer") },
                 onNavigateToPrivacy = { navController.navigate("privacy") },
                 onNavigateToDeviceInfo = { navController.navigate("device_info") },

@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -11,49 +13,53 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.filled.TrendingDown
+import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.PathOperation
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.dp
 import com.storiq.core.model.StorageSnapshot
-import com.storiq.core.ui.theme.Color
-import com.storiq.core.ui.theme.StorIQGreen
 import com.storiq.core.ui.theme.StorIQBlue
+import com.storiq.core.ui.theme.StorIQGreen
 import com.storiq.core.ui.theme.StorIQOrange
 import com.storiq.core.ui.theme.StorIQPurple
 import com.storiq.core.ui.theme.StorIQRed
-import com.storiq.core.ui.theme.StorIQTeal
 import com.storiq.core.ui.theme.Typography
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.TrendingUp
-import androidx.compose.material.icons.filled.TrendingDown
-import androidx.compose.material.icons.filled.Remove
-import androidx.compose.material.icons.filled.ExpandMore
-import java.text.SimpleDateFormat
-import java.util.Locale
+import kotlin.math.abs
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HistoryScreen(
     viewModel: HistoryViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
@@ -62,11 +68,11 @@ fun HistoryScreen(
     val snapshots by viewModel.snapshots.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val timeRange by viewModel.timeRange.collectAsState()
-    val chartData by remember { mutableStateOf(viewModel.chartData) }
-    val growth by remember { mutableStateOf(viewModel.storageGrowth) }
-    val growthPercent by remember { mutableStateOf(viewModel.storageGrowthPercent) }
-    val dailyGrowth by remember { mutableStateOf(viewModel.averageDailyGrowth) }
-    val projectedDate by remember { mutableStateOf(viewModel.projectedFullDate) }
+    var chartData by remember { mutableStateOf(viewModel.chartData) }
+    var growth by remember { mutableStateOf(viewModel.storageGrowth) }
+    var growthPercent by remember { mutableStateOf(viewModel.storageGrowthPercent) }
+    var dailyGrowth by remember { mutableStateOf(viewModel.averageDailyGrowth) }
+    var projectedDate by remember { mutableStateOf(viewModel.projectedFullDate) }
     var expandedMenu by remember { mutableStateOf(false) }
 
     androidx.compose.runtime.LaunchedEffect(viewModel.chartData) {
@@ -82,20 +88,22 @@ fun HistoryScreen(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            androidx.compose.material3.CircularProgressIndicator(color = StorIQGreen)
-            androidx.compose.foundation.layout.Spacer(modifier = Modifier.height(16.dp))
-            Text("Loading history...", style = Typography.bodyLarge)
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                CircularProgressIndicator(color = StorIQGreen)
+                Spacer(modifier = Modifier.height(16.dp))
+                Text("Loading history...", style = Typography.bodyLarge)
+            }
         }
     } else {
         Box(modifier = Modifier.fillMaxSize()) {
-            androidx.compose.material3.Scaffold(
+            Scaffold(
                 topBar = {
                     TopAppBar(
                         title = { Text("Storage History", style = Typography.titleLarge, fontWeight = FontWeight.SemiBold) },
                         navigationIcon = {
                             IconButton(onClick = onBack) {
                                 Icon(
-                                    imageVector = androidx.compose.material.icons.Icons.Filled.ArrowBack,
+                                    imageVector = Icons.Filled.ArrowBack,
                                     contentDescription = "Back",
                                     tint = Color.White
                                 )
@@ -124,7 +132,7 @@ fun HistoryScreen(
                                 )
                             }
                         },
-                        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.StorIQPurple)
+                        colors = TopAppBarDefaults.topAppBarColors(containerColor = StorIQPurple)
                     )
                 }
             ) { paddingValues ->
@@ -135,7 +143,6 @@ fun HistoryScreen(
                         .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    // Growth summary card
                     GrowthSummaryCard(
                         growth = growth,
                         growthPercent = growthPercent,
@@ -143,7 +150,6 @@ fun HistoryScreen(
                         projectedDate = projectedDate
                     )
 
-                    // Time range selector
                     TimeRangeSelector(
                         currentRange = timeRange,
                         onRangeClick = { range ->
@@ -151,7 +157,6 @@ fun HistoryScreen(
                         }
                     )
 
-                    // Chart
                     if (snapshots.isNotEmpty()) {
                         StorageChartCard(
                             chartData = chartData,
@@ -161,7 +166,6 @@ fun HistoryScreen(
                         EmptyHistoryCard()
                     }
 
-                    // Breakdown history
                     if (snapshots.size > 1) {
                         BreakdownHistoryCard(snapshots = snapshots)
                     }
@@ -186,11 +190,11 @@ fun GrowthSummaryCard(
         modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = androidx.compose.material3.CardDefaults.cardColors(
+        colors = CardDefaults.cardColors(
             containerColor = growthColor.copy(alpha = 0.1f)
         )
     ) {
-        androidx.compose.foundation.layout.Box(
+        Box(
             modifier = Modifier.padding(20.dp)
         ) {
             Column(
@@ -209,17 +213,18 @@ fun GrowthSummaryCard(
                         tint = growthColor,
                         modifier = Modifier.size(28.dp)
                     )
-                    androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = if (isGrowthPositive) "Storage Growing" : "Storage Decreasing",
+                        text = if (isGrowthPositive) "Storage Growing" else "Storage Decreasing",
                         style = Typography.titleLarge,
                         fontWeight = FontWeight.SemiBold,
                         color = growthColor
                     )
                 }
 
+                val formattedPercent = "%.1f%%".format(abs(growthPercent))
                 Text(
-                    text = "${StorageBreakdown.formatBytes(growth.absoluteValue)} (${"%.1f".format(growthPercent.absoluteValue)}%)",
+                    text = "${StorageBreakdown.formatBytes(abs(growth))} ($formattedPercent)",
                     style = Typography.displayMedium.copy(fontWeight = FontWeight.Bold, color = growthColor)
                 )
 
@@ -229,7 +234,7 @@ fun GrowthSummaryCard(
                 ) {
                     GrowthStat(
                         label = "Daily Change",
-                        value = StorageBreakdown.formatBytes(dailyGrowth.absoluteValue),
+                        value = StorageBreakdown.formatBytes(abs(dailyGrowth)),
                         color = growthColor
                     )
                     GrowthStat(
@@ -281,18 +286,18 @@ fun TimeRangeSelector(
                 style = Typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
-            androidx.compose.foundation.layout.Spacer(modifier = Modifier.height(12.dp))
-            androidx.compose.foundation.layout.Row(
+            Spacer(modifier = Modifier.height(12.dp))
+            Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 HistoryViewModel.TimeRange.values().forEach { range ->
                     val isSelected = range == currentRange
-                    androidx.compose.material3.Button(
+                    Button(
                         onClick = { onRangeClick(range) },
-                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                            containerColor = if (isSelected) Color.StorIQPurple else Color.Transparent,
-                            contentColor = if (isSelected) Color.White else Color.StorIQPurple
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (isSelected) StorIQPurple else Color.Transparent,
+                            contentColor = if (isSelected) Color.White else StorIQPurple
                         ),
                         modifier = Modifier.weight(1f).height(40.dp),
                         shape = RoundedCornerShape(8.dp)
@@ -324,24 +329,22 @@ fun StorageChartCard(
                 style = Typography.titleLarge,
                 fontWeight = FontWeight.SemiBold
             )
-            androidx.compose.foundation.layout.Spacer(modifier = Modifier.height(16.dp))
-            
+            Spacer(modifier = Modifier.height(16.dp))
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
                     .background(Color.White)
             ) {
-                // Draw chart using Canvas
                 androidx.compose.foundation.Canvas(
                     modifier = Modifier.fillMaxSize()
                 ) {
                     drawStorageChart(chartData, totalStorageGB)
                 }
             }
-            
-            // Legend
-            androidx.compose.foundation.layout.Row(
+
+            Row(
                 modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
@@ -365,7 +368,7 @@ fun LegendItem(label: String, color: Color) {
                 .size(12.dp)
                 .background(color, RoundedCornerShape(3.dp))
         )
-        androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(6.dp))
+        Spacer(modifier = Modifier.width(6.dp))
         Text(text = label, style = Typography.bodySmall)
     }
 }
@@ -391,7 +394,7 @@ fun EmptyHistoryCard() {
                     tint = Color.Gray,
                     modifier = Modifier.size(64.dp)
                 )
-                androidx.compose.foundation.layout.Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "No History Yet",
                     style = Typography.titleLarge,
@@ -403,10 +406,10 @@ fun EmptyHistoryCard() {
                     color = Color.Gray,
                     textAlign = TextAlign.Center
                 )
-                androidx.compose.foundation.layout.Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(
                     onClick = { /* Navigate to dashboard */ },
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    colors = ButtonDefaults.buttonColors(
                         containerColor = StorIQGreen
                     )
                 ) {
@@ -434,8 +437,8 @@ fun BreakdownHistoryCard(snapshots: List<StorageSnapshot>) {
                 style = Typography.titleLarge,
                 fontWeight = FontWeight.SemiBold
             )
-            androidx.compose.foundation.layout.Spacer(modifier = Modifier.height(16.dp))
-            
+            Spacer(modifier = Modifier.height(16.dp))
+
             Column(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
@@ -477,7 +480,7 @@ fun CategoryBreakdownRow(
 ) {
     val change = current - previous
     val isPositive = change > 0
-    
+
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -491,7 +494,7 @@ fun CategoryBreakdownRow(
                     .size(12.dp)
                     .background(color, RoundedCornerShape(3.dp))
             )
-            androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(12.dp))
+            Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = label,
                 style = Typography.bodyLarge
@@ -506,7 +509,7 @@ fun CategoryBreakdownRow(
                 style = Typography.titleMedium.copy(fontWeight = FontWeight.SemiBold)
             )
             Text(
-                text = "${if (isPositive) "+" else ""}${StorageBreakdown.formatBytes(change.absoluteValue)}",
+                text = "${if (isPositive) "+" else ""}${StorageBreakdown.formatBytes(abs(change))}",
                 style = Typography.bodySmall,
                 color = if (isPositive) StorIQRed else StorIQGreen
             )
@@ -514,51 +517,46 @@ fun CategoryBreakdownRow(
     }
 }
 
-private fun drawStorageChart(
+private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawStorageChart(
     chartData: List<HistoryViewModel.ChartDataPoint>,
     totalStorageGB: Float
 ) {
     if (chartData.size < 2) return
-    
-    val width = size.width
-    val height = size.height
+
+    val chartWidth = size.width - 80f
+    val chartHeight = size.height - 80f
     val padding = 40f
-    val chartWidth = width - 2 * padding
-    val chartHeight = height - 2 * padding
-    
+
     val maxY = totalStorageGB
-    val minY = 0f
-    
-    // Draw axes
+
     drawLine(
         color = Color.LightGray,
-        start = androidx.compose.ui.geometry.Offset(padding, padding),
-        end = androidx.compose.ui.geometry.Offset(padding, height - padding),
+        start = Offset(padding, padding),
+        end = Offset(padding, size.height - padding),
         strokeWidth = 1f
     )
     drawLine(
         color = Color.LightGray,
-        start = androidx.compose.ui.geometry.Offset(padding, height - padding),
-        end = androidx.compose.ui.geometry.Offset(width - padding, height - padding),
+        start = Offset(padding, size.height - padding),
+        end = Offset(size.width - padding, size.height - padding),
         strokeWidth = 1f
     )
-    
-    // Draw used storage line
+
     val usedPath = Path()
     val appsPath = Path()
     val mediaPath = Path()
     val docsPath = Path()
     val otherPath = Path()
-    
+
     var first = true
     for ((index, point) in chartData.withIndex()) {
         val x = padding + (index / (chartData.size - 1).toFloat()) * chartWidth
-        val usedY = height - padding - (point.usedGB / maxY) * chartHeight
-        val appsY = height - padding - (point.appsGB / maxY) * chartHeight
-        val mediaY = height - padding - (point.mediaGB / maxY) * chartHeight
-        val docsY = height - padding - (point.docsGB / maxY) * chartHeight
-        val otherY = height - padding - (point.otherGB / maxY) * chartHeight
-        
+        val usedY = size.height - padding - (point.usedGB / maxY) * chartHeight
+        val appsY = size.height - padding - (point.appsGB / maxY) * chartHeight
+        val mediaY = size.height - padding - (point.mediaGB / maxY) * chartHeight
+        val docsY = size.height - padding - (point.docsGB / maxY) * chartHeight
+        val otherY = size.height - padding - (point.otherGB / maxY) * chartHeight
+
         if (first) {
             usedPath.moveTo(x, usedY)
             appsPath.moveTo(x, appsY)
@@ -574,10 +572,10 @@ private fun drawStorageChart(
             otherPath.lineTo(x, otherY)
         }
     }
-    
-    drawPath(usedPath, color = StorIQRed, style = androidx.compose.ui.graphics.Stroke(width = 2f, cap = StrokeCap.Round))
-    drawPath(appsPath, color = StorIQPurple, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))
-    drawPath(mediaPath, color = StorIQBlue, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))
-    drawPath(docsPath, color = StorIQOrange, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))
-    drawPath(otherPath, color = Color.Gray, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))
+
+    drawPath(usedPath, color = StorIQRed, style = Stroke(width = 2f, cap = StrokeCap.Round))
+    drawPath(appsPath, color = StorIQPurple, style = Stroke(width = 1.5f, cap = StrokeCap.Round))
+    drawPath(mediaPath, color = StorIQBlue, style = Stroke(width = 1.5f, cap = StrokeCap.Round))
+    drawPath(docsPath, color = StorIQOrange, style = Stroke(width = 1.5f, cap = StrokeCap.Round))
+    drawPath(otherPath, color = Color.Gray, style = Stroke(width = 1.5f, cap = StrokeCap.Round))
 }
