@@ -83,7 +83,6 @@ dependencies {
     // Coil
     implementation(enforcedPlatform(libs.coil.bom))
     implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
 
     // Navigation
     implementation(libs.androidx.navigation.compose)
@@ -109,10 +108,6 @@ dependencies {
 
     // Serialization
     implementation(libs.kotlinx.serialization.json)
-
-    // Coil Image Loading
-    implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
 
     // Material Icons
     implementation(libs.androidx.compose.material.icons.extended)
