@@ -9,7 +9,8 @@ jvmTarget = "17"
 # Kotlin
 kotlin = "1.9.22"
 kotlinCoroutines = "1.7.3"
-kotlinSerialization = "1.9.22"
+kotlinSerialization = "1.6.3"
+kotlinSerializationPlugin = "1.9.22"
 
 # AndroidX Core
 coreKtx = "1.13.1"
@@ -119,6 +120,6 @@ androidx-compose-ui-tooling-data = { module = "androidx.compose.ui:ui-tooling-da
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerializationPlugin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 jacoco = { id = "jacoco" }
