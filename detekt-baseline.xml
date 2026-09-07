@@ -1,0 +1,459 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>CyclomaticComplexMethod:DashboardScreen.kt$@Composable fun DashboardScreen( viewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onNavigateToAnalyze: () -&gt; Unit = {}, onNavigateToClean: () -&gt; Unit = {}, onNavigateToApps: () -&gt; Unit = {}, onNavigateToSwipeClean: () -&gt; Unit = {}, onNavigateToLargeFiles: () -&gt; Unit = {}, onNavigateToDuplicates: () -&gt; Unit = {} )</ID>
+    <ID>CyclomaticComplexMethod:FileScanner.kt$FileScanner$private fun categorizeFile(displayName: String?, mimeType: String?): MediaCategory</ID>
+    <ID>CyclomaticComplexMethod:StorageRepositoryImpl.kt$StorageRepositoryImpl$override suspend fun findDuplicates(): List&lt;DuplicateGroup&gt;</ID>
+    <ID>CyclomaticComplexMethod:SwipeCleanGalleryScreen.kt$@Composable fun SwipeCleanGalleryScreen( viewModel: SwipeCleanViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>CyclomaticComplexMethod:SwipeCleanReviewScreen.kt$@Composable fun SwipeCleanReviewScreen( viewModel: SwipeCleanViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>ForEachOnRange:OnboardingScreen.kt$1..totalSteps</ID>
+    <ID>ForbiddenComment:StorageRepositoryImpl.kt$StorageRepositoryImpl$// TODO: Add actual download scanning</ID>
+    <ID>ForbiddenComment:StorageRepositoryImpl.kt$StorageRepositoryImpl$// TODO: Implement selection update</ID>
+    <ID>FunctionNaming:AccessibilityUtils.kt$@Composable fun AccessibleCard( modifier: Modifier = Modifier, description: String, selected: Boolean = false, onClick: (() -&gt; Unit)? = null, content: @Composable () -&gt; Unit )</ID>
+    <ID>FunctionNaming:AnalyzerScreen.kt$@Composable fun AnalyzerScreen()</ID>
+    <ID>FunctionNaming:AnalyzerScreen.kt$@Composable fun CategoryCard( title: String, subtitle: String, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color, onClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:AppsScreen.kt$@Composable fun AppItem( name: String, packageName: String, size: String, lastUsed: String, icon: androidx.compose.ui.graphics.vector.ImageVector, onClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:AppsScreen.kt$@Composable fun AppSummaryCard( totalApps: Int, userApps: Int, totalSize: String, unusedApps: Int )</ID>
+    <ID>FunctionNaming:AppsScreen.kt$@Composable fun AppsScreen()</ID>
+    <ID>FunctionNaming:AppsScreen.kt$@Composable fun SectionHeader( title: String, actionText: String, onActionClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:AppsScreen.kt$@Composable fun SummaryStat( label: String, value: String, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color )</ID>
+    <ID>FunctionNaming:CleanScreen.kt$@Composable fun CleanScreen()</ID>
+    <ID>FunctionNaming:CleanScreen.kt$@Composable fun CleanupCategoryCard( title: String, description: String, size: String, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color, risk: String, onClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DashboardScreen.kt$@Composable fun DashboardScreen( viewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onNavigateToAnalyze: () -&gt; Unit = {}, onNavigateToClean: () -&gt; Unit = {}, onNavigateToApps: () -&gt; Unit = {}, onNavigateToSwipeClean: () -&gt; Unit = {}, onNavigateToLargeFiles: () -&gt; Unit = {}, onNavigateToDuplicates: () -&gt; Unit = {} )</ID>
+    <ID>FunctionNaming:DashboardScreen.kt$@Composable fun QuickActionButton( title: String, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color, action: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DashboardScreen.kt$@Composable fun QuickActionsCard( onAnalyzeClick: () -&gt; Unit, onSwipeCleanClick: () -&gt; Unit, onLargeFilesClick: () -&gt; Unit, onDuplicatesClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DashboardScreen.kt$@Composable fun RecommendationsCard( recommendations: List&lt;RecommendationItem&gt;, onCleanupClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DashboardScreen.kt$@Composable fun StorageBreakdownCard(breakdown: List&lt;BreakdownItem&gt;)</ID>
+    <ID>FunctionNaming:DashboardScreen.kt$@Composable fun StorageOverviewCard( totalStorage: String, usedStorage: String, freeStorage: String, usagePercent: Float )</ID>
+    <ID>FunctionNaming:DuplicatesScreen.kt$@Composable fun DuplicateGroupCard( group: DuplicateGroup, isSelected: Boolean, onSelectionChange: (Boolean) -&gt; Unit, onClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DuplicatesScreen.kt$@Composable fun DuplicateReviewCard( group: DuplicateGroup, isSelected: Boolean, onSelectionChange: (Boolean) -&gt; Unit )</ID>
+    <ID>FunctionNaming:DuplicatesScreen.kt$@Composable fun DuplicatesReviewScreen( viewModel: DuplicatesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DuplicatesScreen.kt$@Composable fun DuplicatesScreen( viewModel: DuplicatesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DuplicatesScreen.kt$@Composable fun DuplicatesSummaryBanner( totalGroups: Int, totalWasted: Long, selectedCount: Int, selectedSize: Long, onReviewClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:DuplicatesScreen.kt$@Composable fun StatItem( label: String, value: Any, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color )</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun BreakdownHistoryCard(snapshots: List&lt;StorageSnapshot&gt;)</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun CategoryBreakdownRow( label: String, current: Long, previous: Long, color: Color )</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun EmptyHistoryCard()</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun GrowthStat( label: String, value: String, color: Color )</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun GrowthSummaryCard( growth: Long, growthPercent: Float, dailyGrowth: Long, projectedDate: String? )</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun HistoryScreen( viewModel: HistoryViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun LegendItem(label: String, color: Color)</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun StorageChartCard( chartData: List&lt;HistoryViewModel.ChartDataPoint&gt;, totalStorageGB: Float )</ID>
+    <ID>FunctionNaming:HistoryScreen.kt$@Composable fun TimeRangeSelector( currentRange: HistoryViewModel.TimeRange, onRangeClick: (HistoryViewModel.TimeRange) -&gt; Unit )</ID>
+    <ID>FunctionNaming:InitialScanScreen.kt$@Composable fun InitialScanScreen( repository: StorageRepository, onScanComplete: (StorageRepositoryImpl.FullScanResult) -&gt; Unit )</ID>
+    <ID>FunctionNaming:LargeFilesScreen.kt$@Composable fun LargeFileItem( file: MediaRecord, onClick: () -&gt; Unit, onShare: () -&gt; Unit, onDelete: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:LargeFilesScreen.kt$@Composable fun LargeFilesScreen( viewModel: LargeFilesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:LargeFilesScreen.kt$@Composable fun SizeGroupChips( groups: List&lt;LargeFilesViewModel.SizeGroup&gt;, selectedGroup: LargeFilesViewModel.SizeGroupFilter?, onGroupClick: (LargeFilesViewModel.SizeGroupFilter) -&gt; Unit, onClearClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:MainActivity.kt$@Composable fun StorIQBottomNavigation(navController: NavController)</ID>
+    <ID>FunctionNaming:MainActivity.kt$@Composable fun StorIQNavHost(navController: NavController, storageRepository: StorageRepository)</ID>
+    <ID>FunctionNaming:MoreScreen.kt$@Composable fun MoreItemCard( item: MoreItem, onClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:MoreScreen.kt$@Composable fun MoreScreen( onNavigateToHistory: () -&gt; Unit = {}, onNavigateToSwipeClean: () -&gt; Unit = {}, onNavigateToFileExplorer: () -&gt; Unit = {}, onNavigateToPrivacy: () -&gt; Unit = {}, onNavigateToDeviceInfo: () -&gt; Unit = {}, onNavigateToSettings: () -&gt; Unit = {} )</ID>
+    <ID>FunctionNaming:MoreScreen.kt$@Composable fun SectionHeader(title: String)</ID>
+    <ID>FunctionNaming:OnboardingScreen.kt$@Composable fun OnboardingPageView( page: OnboardingPage, currentStep: Int, totalSteps: Int, onNext: () -&gt; Unit, onSkip: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:OnboardingScreen.kt$@Composable fun OnboardingScreen(onFinish: () -&gt; Unit)</ID>
+    <ID>FunctionNaming:StateComponents.kt$@Composable fun EmptyState( icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, message: String, actionText: String? = null, actionIcon: androidx.compose.ui.graphics.vector.ImageVector? = null, onAction: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>FunctionNaming:StateComponents.kt$@Composable fun ErrorState( title: String, message: String, onRetry: (() -&gt; Unit)? = null, onDismiss: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>FunctionNaming:StateComponents.kt$@Composable fun LoadingState( message: String = "Loading...", showProgress: Boolean = false, progress: Float = 0f, modifier: Modifier = Modifier )</ID>
+    <ID>FunctionNaming:StateComponents.kt$@Composable fun PermissionState( title: String, message: String, icon: androidx.compose.ui.graphics.vector.ImageVector = Icons.Filled.Lock, onGrant: () -&gt; Unit, onContinue: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>FunctionNaming:StateComponents.kt$@Composable fun ScanProgressState( steps: List&lt;ScanStep&gt;, currentStep: Int, stepProgress: Float, message: String = "Analyzing your device...", modifier: Modifier = Modifier )</ID>
+    <ID>FunctionNaming:SwipeCleanGalleryScreen.kt$@Composable fun MediaCard( media: MediaRecord, dragOffset: Float, dragRotation: Float, onDrag: (Float, Float) -&gt; Unit, onDragEnd: (Float) -&gt; Unit )</ID>
+    <ID>FunctionNaming:SwipeCleanGalleryScreen.kt$@Composable fun SwipeCleanGalleryScreen( viewModel: SwipeCleanViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:SwipeCleanGalleryScreen.kt$@Composable fun SwipeFeedbackOverlay( text: String, color: Color, icon: ImageVector, progress: Float )</ID>
+    <ID>FunctionNaming:SwipeCleanReviewScreen.kt$@Composable fun ReviewGridItem( media: MediaRecord, isSelected: Boolean, onSelectionChange: (Boolean) -&gt; Unit, onClick: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:SwipeCleanReviewScreen.kt$@Composable fun StatItem( label: String, value: Any, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color )</ID>
+    <ID>FunctionNaming:SwipeCleanReviewScreen.kt$@Composable fun SwipeCleanReviewScreen( viewModel: SwipeCleanViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>FunctionNaming:Theme.kt$@Composable fun StorIQTheme( darkTheme: Boolean = false, content: @Composable () -&gt; Unit )</ID>
+    <ID>ImplicitDefaultLocale:AlgorithmTests.kt$RecommendationEngineTest$String.format("%.0f", usagePercent)</ID>
+    <ID>ImplicitDefaultLocale:DashboardScreen.kt$String.format("%.0f", usagePercent)</ID>
+    <ID>ImplicitDefaultLocale:HistoryScreen.kt$String.format("%.1f", growthPercent.absoluteValue)</ID>
+    <ID>ImplicitDefaultLocale:StorageRepositoryImpl.kt$StorageRepositoryImpl$String.format("%.0f", usagePercent)</ID>
+    <ID>LongMethod:AnalyzerScreen.kt$@Composable fun AnalyzerScreen()</ID>
+    <ID>LongMethod:AppsScreen.kt$@Composable fun AppItem( name: String, packageName: String, size: String, lastUsed: String, icon: androidx.compose.ui.graphics.vector.ImageVector, onClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:AppsScreen.kt$@Composable fun AppsScreen()</ID>
+    <ID>LongMethod:CleanScreen.kt$@Composable fun CleanScreen()</ID>
+    <ID>LongMethod:CleanScreen.kt$@Composable fun CleanupCategoryCard( title: String, description: String, size: String, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color, risk: String, onClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:DashboardScreen.kt$@Composable fun DashboardScreen( viewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onNavigateToAnalyze: () -&gt; Unit = {}, onNavigateToClean: () -&gt; Unit = {}, onNavigateToApps: () -&gt; Unit = {}, onNavigateToSwipeClean: () -&gt; Unit = {}, onNavigateToLargeFiles: () -&gt; Unit = {}, onNavigateToDuplicates: () -&gt; Unit = {} )</ID>
+    <ID>LongMethod:DashboardScreen.kt$@Composable fun RecommendationsCard( recommendations: List&lt;RecommendationItem&gt;, onCleanupClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:DuplicatesScreen.kt$@Composable fun DuplicateGroupCard( group: DuplicateGroup, isSelected: Boolean, onSelectionChange: (Boolean) -&gt; Unit, onClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:DuplicatesScreen.kt$@Composable fun DuplicateReviewCard( group: DuplicateGroup, isSelected: Boolean, onSelectionChange: (Boolean) -&gt; Unit )</ID>
+    <ID>LongMethod:DuplicatesScreen.kt$@Composable fun DuplicatesReviewScreen( viewModel: DuplicatesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>LongMethod:DuplicatesScreen.kt$@Composable fun DuplicatesScreen( viewModel: DuplicatesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>LongMethod:DuplicatesScreen.kt$@Composable fun DuplicatesSummaryBanner( totalGroups: Int, totalWasted: Long, selectedCount: Int, selectedSize: Long, onReviewClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:HistoryScreen.kt$@Composable fun GrowthSummaryCard( growth: Long, growthPercent: Float, dailyGrowth: Long, projectedDate: String? )</ID>
+    <ID>LongMethod:HistoryScreen.kt$@Composable fun HistoryScreen( viewModel: HistoryViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>LongMethod:InitialScanScreen.kt$@Composable fun InitialScanScreen( repository: StorageRepository, onScanComplete: (StorageRepositoryImpl.FullScanResult) -&gt; Unit )</ID>
+    <ID>LongMethod:LargeFilesScreen.kt$@Composable fun LargeFileItem( file: MediaRecord, onClick: () -&gt; Unit, onShare: () -&gt; Unit, onDelete: () -&gt; Unit )</ID>
+    <ID>LongMethod:LargeFilesScreen.kt$@Composable fun LargeFilesScreen( viewModel: LargeFilesViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>LongMethod:MainActivity.kt$@Composable fun StorIQNavHost(navController: NavController, storageRepository: StorageRepository)</ID>
+    <ID>LongMethod:MoreScreen.kt$@Composable fun MoreScreen( onNavigateToHistory: () -&gt; Unit = {}, onNavigateToSwipeClean: () -&gt; Unit = {}, onNavigateToFileExplorer: () -&gt; Unit = {}, onNavigateToPrivacy: () -&gt; Unit = {}, onNavigateToDeviceInfo: () -&gt; Unit = {}, onNavigateToSettings: () -&gt; Unit = {} )</ID>
+    <ID>LongMethod:OnboardingScreen.kt$@Composable fun OnboardingPageView( page: OnboardingPage, currentStep: Int, totalSteps: Int, onNext: () -&gt; Unit, onSkip: () -&gt; Unit )</ID>
+    <ID>LongMethod:OnboardingScreen.kt$@Composable fun OnboardingScreen(onFinish: () -&gt; Unit)</ID>
+    <ID>LongMethod:StateComponents.kt$@Composable fun EmptyState( icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, message: String, actionText: String? = null, actionIcon: androidx.compose.ui.graphics.vector.ImageVector? = null, onAction: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>LongMethod:StateComponents.kt$@Composable fun ErrorState( title: String, message: String, onRetry: (() -&gt; Unit)? = null, onDismiss: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>LongMethod:StateComponents.kt$@Composable fun PermissionState( title: String, message: String, icon: androidx.compose.ui.graphics.vector.ImageVector = Icons.Filled.Lock, onGrant: () -&gt; Unit, onContinue: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>LongMethod:StateComponents.kt$@Composable fun ScanProgressState( steps: List&lt;ScanStep&gt;, currentStep: Int, stepProgress: Float, message: String = "Analyzing your device...", modifier: Modifier = Modifier )</ID>
+    <ID>LongMethod:StorageRepositoryImpl.kt$StorageRepositoryImpl$suspend fun performFullScan(): FullScanResult</ID>
+    <ID>LongMethod:SwipeCleanGalleryScreen.kt$@Composable fun MediaCard( media: MediaRecord, dragOffset: Float, dragRotation: Float, onDrag: (Float, Float) -&gt; Unit, onDragEnd: (Float) -&gt; Unit )</ID>
+    <ID>LongMethod:SwipeCleanGalleryScreen.kt$@Composable fun SwipeCleanGalleryScreen( viewModel: SwipeCleanViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>LongMethod:SwipeCleanReviewScreen.kt$@Composable fun ReviewGridItem( media: MediaRecord, isSelected: Boolean, onSelectionChange: (Boolean) -&gt; Unit, onClick: () -&gt; Unit )</ID>
+    <ID>LongMethod:SwipeCleanReviewScreen.kt$@Composable fun SwipeCleanReviewScreen( viewModel: SwipeCleanViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onBack: () -&gt; Unit )</ID>
+    <ID>LongParameterList:AppsScreen.kt$( name: String, packageName: String, size: String, lastUsed: String, icon: androidx.compose.ui.graphics.vector.ImageVector, onClick: () -&gt; Unit )</ID>
+    <ID>LongParameterList:CleanScreen.kt$( title: String, description: String, size: String, icon: androidx.compose.ui.graphics.vector.ImageVector, color: Color, risk: String, onClick: () -&gt; Unit )</ID>
+    <ID>LongParameterList:DashboardScreen.kt$( viewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), onNavigateToAnalyze: () -&gt; Unit = {}, onNavigateToClean: () -&gt; Unit = {}, onNavigateToApps: () -&gt; Unit = {}, onNavigateToSwipeClean: () -&gt; Unit = {}, onNavigateToLargeFiles: () -&gt; Unit = {}, onNavigateToDuplicates: () -&gt; Unit = {} )</ID>
+    <ID>LongParameterList:FileScanner.kt$FileScanner$( uri: Uri, projection: Array&lt;String&gt;, selection: String?, selectionArgs: Array&lt;String&gt;?, scanSessionId: Long, mapCursor: (Cursor) -&gt; FileRecord )</ID>
+    <ID>LongParameterList:HistoryViewModelTest.kt$HistoryViewModelTest$( totalBytes: Long, usedBytes: Long, freeBytes: Long, appBytes: Long, mediaBytes: Long, documentsBytes: Long, otherBytes: Long, timestamp: Long )</ID>
+    <ID>LongParameterList:MoreScreen.kt$( onNavigateToHistory: () -&gt; Unit = {}, onNavigateToSwipeClean: () -&gt; Unit = {}, onNavigateToFileExplorer: () -&gt; Unit = {}, onNavigateToPrivacy: () -&gt; Unit = {}, onNavigateToDeviceInfo: () -&gt; Unit = {}, onNavigateToSettings: () -&gt; Unit = {} )</ID>
+    <ID>LongParameterList:StateComponents.kt$( icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, message: String, actionText: String? = null, actionIcon: androidx.compose.ui.graphics.vector.ImageVector? = null, onAction: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>LongParameterList:StateComponents.kt$( title: String, message: String, icon: androidx.compose.ui.graphics.vector.ImageVector = Icons.Filled.Lock, onGrant: () -&gt; Unit, onContinue: (() -&gt; Unit)? = null, modifier: Modifier = Modifier )</ID>
+    <ID>MagicNumber:AnimationUtils.kt$AnimationUtils.SlideDirection.BOTTOM$300f</ID>
+    <ID>MagicNumber:AnimationUtils.kt$AnimationUtils.SlideDirection.LEFT$300f</ID>
+    <ID>MagicNumber:AnimationUtils.kt$AnimationUtils.SlideDirection.RIGHT$300f</ID>
+    <ID>MagicNumber:AnimationUtils.kt$AnimationUtils.SlideDirection.TOP$300f</ID>
+    <ID>MagicNumber:AppRecord.kt$AppRecord$1000L</ID>
+    <ID>MagicNumber:AppRecord.kt$AppRecord$24</ID>
+    <ID>MagicNumber:AppRecord.kt$AppRecord$60</ID>
+    <ID>MagicNumber:AppRecord.kt$AppRecord$90</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$100</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$1000</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$15</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$20</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$24</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$4</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$50</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$60</ID>
+    <ID>MagicNumber:BatteryUtils.kt$BatteryUtils$8</ID>
+    <ID>MagicNumber:Color.kt$0xFF00897B</ID>
+    <ID>MagicNumber:Color.kt$0xFF1E88E5</ID>
+    <ID>MagicNumber:Color.kt$0xFF388E3C</ID>
+    <ID>MagicNumber:Color.kt$0xFF5E35B1</ID>
+    <ID>MagicNumber:Color.kt$0xFFC62828</ID>
+    <ID>MagicNumber:Color.kt$0xFFF57C00</ID>
+    <ID>MagicNumber:DashboardScreen.kt$100f</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1024.0</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1024L</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1_048_576.0</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1_048_576L</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1_073_741_824.0</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1_073_741_824L</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1_099_511_627_776.0</ID>
+    <ID>MagicNumber:DashboardViewModel.kt$DashboardViewModel.Companion$1_099_511_627_776L</ID>
+    <ID>MagicNumber:DeviceCompatibility.kt$DeviceCompatibility$29</ID>
+    <ID>MagicNumber:DeviceCompatibility.kt$DeviceCompatibility$30</ID>
+    <ID>MagicNumber:DuplicatesScreen.kt$1024</ID>
+    <ID>MagicNumber:DuplicatesScreen.kt$1024.0</ID>
+    <ID>MagicNumber:DuplicatesScreen.kt$1024L</ID>
+    <ID>MagicNumber:FileScanner.kt$FileScanner$100</ID>
+    <ID>MagicNumber:FileScanner.kt$FileScanner$1000L</ID>
+    <ID>MagicNumber:FileScanner.kt$FileScanner$8192</ID>
+    <ID>MagicNumber:HistoryScreen.kt$40f</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$100</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$1000</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$1000L</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$24</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$30</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$365</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$3650</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$60</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$7</ID>
+    <ID>MagicNumber:HistoryViewModel.kt$HistoryViewModel$90</ID>
+    <ID>MagicNumber:LargeFilesScreen.kt$1024</ID>
+    <ID>MagicNumber:LargeFilesScreen.kt$1024.0</ID>
+    <ID>MagicNumber:LargeFilesScreen.kt$1024L</ID>
+    <ID>MagicNumber:LargeFilesViewModel.kt$LargeFilesViewModel$100L</ID>
+    <ID>MagicNumber:LargeFilesViewModel.kt$LargeFilesViewModel$1024</ID>
+    <ID>MagicNumber:LargeFilesViewModel.kt$LargeFilesViewModel$1024L</ID>
+    <ID>MagicNumber:LargeFilesViewModel.kt$LargeFilesViewModel$500L</ID>
+    <ID>MagicNumber:LargeFilesViewModel.kt$LargeFilesViewModel$5L</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1024.0</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1024L</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1_048_576.0</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1_048_576L</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1_073_741_824.0</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1_073_741_824L</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1_099_511_627_776.0</ID>
+    <ID>MagicNumber:MediaCategory.kt$StorageBreakdown.Companion$1_099_511_627_776L</ID>
+    <ID>MagicNumber:MediaScanner.kt$MediaScanner$100</ID>
+    <ID>MagicNumber:MediaScanner.kt$MediaScanner$1000L</ID>
+    <ID>MagicNumber:MediaScanner.kt$MediaScanner$8192</ID>
+    <ID>MagicNumber:PerformanceUtils.kt$PerformanceUtils$180f</ID>
+    <ID>MagicNumber:PerformanceUtils.kt$PerformanceUtils$270f</ID>
+    <ID>MagicNumber:PerformanceUtils.kt$PerformanceUtils$8192</ID>
+    <ID>MagicNumber:PerformanceUtils.kt$PerformanceUtils$90f</ID>
+    <ID>MagicNumber:ScanWorker.kt$ScanWorker.Companion$1000L</ID>
+    <ID>MagicNumber:ScanWorker.kt$ScanWorker.Companion$24</ID>
+    <ID>MagicNumber:ScanWorker.kt$ScanWorker.Companion$5</ID>
+    <ID>MagicNumber:ScanWorker.kt$ScanWorker.Companion$60</ID>
+    <ID>MagicNumber:StorageRepositoryImpl.kt$StorageRepositoryImpl$100</ID>
+    <ID>MagicNumber:StorageRepositoryImpl.kt$StorageRepositoryImpl$1000</ID>
+    <ID>MagicNumber:StorageRepositoryImpl.kt$StorageRepositoryImpl$1024</ID>
+    <ID>MagicNumber:StorageRepositoryImpl.kt$StorageRepositoryImpl$24L</ID>
+    <ID>MagicNumber:StorageRepositoryImpl.kt$StorageRepositoryImpl$60</ID>
+    <ID>MagicNumber:StorageRepositoryImpl.kt$StorageRepositoryImpl$90f</ID>
+    <ID>MagicNumber:StorageSnapshot.kt$StorageSnapshot$100</ID>
+    <ID>MagicNumber:SwipeCleanGalleryScreen.kt$0.5f</ID>
+    <ID>MagicNumber:SwipeCleanGalleryScreen.kt$100</ID>
+    <ID>MagicNumber:SwipeCleanGalleryScreen.kt$1000</ID>
+    <ID>MagicNumber:SwipeCleanGalleryScreen.kt$15f</ID>
+    <ID>MagicNumber:SwipeCleanGalleryScreen.kt$50</ID>
+    <ID>MagicNumber:SwipeCleanGalleryScreen.kt$60000</ID>
+    <ID>MagicNumber:SwipeCleanReviewScreen.kt$1000</ID>
+    <ID>MagicNumber:SwipeCleanReviewScreen.kt$3</ID>
+    <ID>MagicNumber:SwipeCleanReviewScreen.kt$60000</ID>
+    <ID>MagicNumber:SwipeCleanViewModel.kt$SwipeCleanViewModel$100</ID>
+    <ID>MagicNumber:SwipeCleanViewModel.kt$SwipeCleanViewModel$1024</ID>
+    <ID>MagicNumber:SwipeCleanViewModel.kt$SwipeCleanViewModel$50</ID>
+    <ID>MagicNumber:Theme.kt$0xCC000000</ID>
+    <ID>MagicNumber:Theme.kt$0xFF001F3D</ID>
+    <ID>MagicNumber:Theme.kt$0xFF002000</ID>
+    <ID>MagicNumber:Theme.kt$0xFF0A0A0A</ID>
+    <ID>MagicNumber:Theme.kt$0xFF121212</ID>
+    <ID>MagicNumber:Theme.kt$0xFF1A003F</ID>
+    <ID>MagicNumber:Theme.kt$0xFF1E1E1E</ID>
+    <ID>MagicNumber:Theme.kt$0xFF1E88E5</ID>
+    <ID>MagicNumber:Theme.kt$0xFF388E3C</ID>
+    <ID>MagicNumber:Theme.kt$0xFF404040</ID>
+    <ID>MagicNumber:Theme.kt$0xFF424242</ID>
+    <ID>MagicNumber:Theme.kt$0xFF5E35B1</ID>
+    <ID>MagicNumber:Theme.kt$0xFF64B5F6</ID>
+    <ID>MagicNumber:Theme.kt$0xFF707070</ID>
+    <ID>MagicNumber:Theme.kt$0xFF757575</ID>
+    <ID>MagicNumber:Theme.kt$0xFF7C4DFF</ID>
+    <ID>MagicNumber:Theme.kt$0xFF81C784</ID>
+    <ID>MagicNumber:Theme.kt$0xFFB0B0B0</ID>
+    <ID>MagicNumber:Theme.kt$0xFFB39DDB</ID>
+    <ID>MagicNumber:Theme.kt$0xFFBBDEFB</ID>
+    <ID>MagicNumber:Theme.kt$0xFFBDBDBD</ID>
+    <ID>MagicNumber:Theme.kt$0xFFC62828</ID>
+    <ID>MagicNumber:Theme.kt$0xFFC8E6C9</ID>
+    <ID>MagicNumber:Theme.kt$0xFFCF6679</ID>
+    <ID>MagicNumber:Theme.kt$0xFFEDE7F6</ID>
+    <ID>MagicNumber:Theme.kt$0xFFF5F5F5</ID>
+    <ID>MagicNumber:Theme.kt$0xFFFAFAFA</ID>
+    <ID>MagicNumber:Theme.kt$0xFFFFFFFF</ID>
+    <ID>MatchingDeclarationName:SwipeCleanTests.kt$SwipeCleanModelTest</ID>
+    <ID>MaxLineLength:AlgorithmTests.kt$RecommendationEngineTest$description = "Your storage is ${String.format("%.0f", usagePercent)}% full. Consider cleaning up space."</ID>
+    <ID>MaxLineLength:AnalyzerScreen.kt$colors = TopAppBarDefaults.topAppBarColors(containerColor = androidx.compose.material3.MaterialTheme.colorScheme.surface)</ID>
+    <ID>MaxLineLength:AppRecord.kt$AppRecord$get() = lastUsedTimestamp == null || (System.currentTimeMillis() - lastUsedTimestamp!!) &gt; 90 * 24 * 60 * 60 * 1000L</ID>
+    <ID>MaxLineLength:AppRecordDao.kt$AppRecordDao$@Query("SELECT * FROM app_records WHERE lastUsedTimestamp IS NOT NULL AND lastUsedTimestamp &lt; :cutoffTime ORDER BY lastUsedTimestamp ASC")</ID>
+    <ID>MaxLineLength:AppScanner.kt$AppScanner$val (appSize, userDataSize, cacheSize) = getAppStorageSize(packageName, storageStatsManager, storageManager)</ID>
+    <ID>MaxLineLength:AppsScreen.kt$UnusedAppItem("Old Photo Editor", "com.example.photo", "1.2 GB", "210 days ago", Icons.Filled.Image)</ID>
+    <ID>MaxLineLength:AppsScreen.kt$colors = TopAppBarDefaults.topAppBarColors(containerColor = androidx.compose.material3.MaterialTheme.colorScheme.surface)</ID>
+    <ID>MaxLineLength:CleanScreen.kt$colors = TopAppBarDefaults.topAppBarColors(containerColor = androidx.compose.material3.MaterialTheme.colorScheme.surface)</ID>
+    <ID>MaxLineLength:CleanScreen.kt$style = Typography.displayLarge.copy(fontWeight = FontWeight.Bold, color = Color.StorIQGreen)</ID>
+    <ID>MaxLineLength:Converters.kt$Converters$fun</ID>
+    <ID>MaxLineLength:DeviceCompatibility.kt$DeviceCompatibility$lowerManufacturer.contains("xiaomi") || lowerManufacturer.contains("redmi") || lowerManufacturer.contains("poco")</ID>
+    <ID>MaxLineLength:DuplicatesScreen.kt$androidx.compose.foundation.layout.Spacer(modifier = androidx.compose.foundation.layout.Modifier.height(16.dp))</ID>
+    <ID>MaxLineLength:DuplicatesScreen.kt$contentPadding = androidx.compose.foundation.layout.PaddingValues(top = 8.dp, bottom = 100.dp)</ID>
+    <ID>MaxLineLength:FileScanner.kt$FileScanner$contentResolver.query(uri, projection, selection, selectionArgs, "${MediaStore.MediaColumns.DATE_MODIFIED} DESC")</ID>
+    <ID>MaxLineLength:FileScanner.kt$FileScanner$val createdDate = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATE_ADDED)) * 1000L</ID>
+    <ID>MaxLineLength:FileScanner.kt$FileScanner$val modifiedDate = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATE_MODIFIED)) * 1000L</ID>
+    <ID>MaxLineLength:FileScanner.kt$FileScanner$val relativePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.RELATIVE_PATH))</ID>
+    <ID>MaxLineLength:HistoryScreen.kt$drawPath(appsPath, color = StorIQPurple, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))</ID>
+    <ID>MaxLineLength:HistoryScreen.kt$drawPath(docsPath, color = StorIQOrange, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))</ID>
+    <ID>MaxLineLength:HistoryScreen.kt$drawPath(mediaPath, color = StorIQBlue, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))</ID>
+    <ID>MaxLineLength:HistoryScreen.kt$drawPath(otherPath, color = Color.Gray, style = androidx.compose.ui.graphics.Stroke(width = 1.5f, cap = StrokeCap.Round))</ID>
+    <ID>MaxLineLength:HistoryScreen.kt$drawPath(usedPath, color = StorIQRed, style = androidx.compose.ui.graphics.Stroke(width = 2f, cap = StrokeCap.Round))</ID>
+    <ID>MaxLineLength:HistoryScreen.kt$text = "${StorageBreakdown.formatBytes(growth.absoluteValue)} (${String.format("%.1f", growthPercent.absoluteValue)}%)"</ID>
+    <ID>MaxLineLength:HistoryScreen.kt$title = { Text("Storage History", style = Typography.titleLarge, fontWeight = FontWeight.SemiBold) }</ID>
+    <ID>MaxLineLength:HistoryViewModel.kt$HistoryViewModel$return java.text.SimpleDateFormat("MMM dd, yyyy", java.util.Locale.getDefault()).format(java.util.Date(projectedTime))</ID>
+    <ID>MaxLineLength:HistoryViewModelTest.kt$HistoryViewModelTest$createSnapshot(1000, 500, 500, 150, 150, 100, 100, System.currentTimeMillis() - 10*24*60*60*1000L)</ID>
+    <ID>MaxLineLength:HistoryViewModelTest.kt$HistoryViewModelTest$createSnapshot(1000, 600, 400, 200, 150, 150, 100, System.currentTimeMillis() - 48*60*60*1000L)</ID>
+    <ID>MaxLineLength:HistoryViewModelTest.kt$HistoryViewModelTest$createSnapshot(1000, 700, 300, 250, 200, 150, 100, System.currentTimeMillis() - 24*60*60*1000L)</ID>
+    <ID>MaxLineLength:InitialScanScreen.kt$color = if (isCurrent || isCompleted) com.storiq.core.ui.theme.StorIQGreen else androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant</ID>
+    <ID>MaxLineLength:InitialScanScreen.kt$if (isCurrent) com.storiq.core.ui.theme.StorIQGreen.copy(alpha = 0.5f) else Color.LightGray</ID>
+    <ID>MaxLineLength:InitialScanScreen.kt$text = "Found ${scanResult!!.mediaScanned} media files, ${scanResult!!.filesScanned} documents, ${scanResult!!.appsScanned} apps"</ID>
+    <ID>MaxLineLength:LargeFilesScreen.kt$androidx.compose.foundation.layout.Spacer(modifier = androidx.compose.foundation.layout.Modifier.height(16.dp))</ID>
+    <ID>MaxLineLength:LargeFilesScreen.kt$contentPadding = androidx.compose.foundation.layout.PaddingValues(top = 8.dp, bottom = 100.dp)</ID>
+    <ID>MaxLineLength:LargeFilesScreen.kt$message = selectedGroup != null</ID>
+    <ID>MaxLineLength:LargeFilesScreen.kt$title = { Text("Large Files", style = Typography.titleLarge, fontWeight = FontWeight.SemiBold) }</ID>
+    <ID>MaxLineLength:LargeFilesScreen.kt$val isDocument = file.mimeType.startsWith("application/pdf") || file.mimeType.startsWith("application/vnd.openxmlformats")</ID>
+    <ID>MaxLineLength:MainActivity.kt$androidx.compose.material3.Text("Device Info - Coming in Phase 3", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = androidx.compose.foundation.layout.Modifier.fillMaxSize().padding(16.dp))</ID>
+    <ID>MaxLineLength:MainActivity.kt$androidx.compose.material3.Text("File Explorer - Coming in Phase 3", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = androidx.compose.foundation.layout.Modifier.fillMaxSize().padding(16.dp))</ID>
+    <ID>MaxLineLength:MainActivity.kt$androidx.compose.material3.Text("Privacy Dashboard - Coming in Phase 3", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = androidx.compose.foundation.layout.Modifier.fillMaxSize().padding(16.dp))</ID>
+    <ID>MaxLineLength:MainActivity.kt$androidx.compose.material3.Text("Settings - Coming in Phase 3", style = androidx.compose.material3.MaterialTheme.typography.headlineMedium, modifier = androidx.compose.foundation.layout.Modifier.fillMaxSize().padding(16.dp))</ID>
+    <ID>MaxLineLength:MainActivity.kt$tint = if (selected) androidx.compose.material3.MaterialTheme.colorScheme.primary else androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant</ID>
+    <ID>MaxLineLength:MainActivity.kt$val selected = navController.currentBackStackEntryAsState().value?.destination?.route?.startsWith(item.route) == true</ID>
+    <ID>MaxLineLength:MediaScanner.kt$MediaScanner$contentResolver.query(uri, projection, null, null, "${MediaStore.MediaColumns.DATE_MODIFIED} DESC")</ID>
+    <ID>MaxLineLength:MediaScanner.kt$MediaScanner$val modifiedDate = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATE_MODIFIED)) * 1000L</ID>
+    <ID>MaxLineLength:MediaScanner.kt$MediaScanner$val modifiedDate = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATE_MODIFIED)) * 1000L</ID>
+    <ID>MaxLineLength:MediaScanner.kt$MediaScanner$val modifiedDate = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATE_MODIFIED)) * 1000L</ID>
+    <ID>MaxLineLength:MoreScreen.kt$MoreItem("Privacy Dashboard", "Permission insights &amp; controls", Icons.Filled.PrivacyTip, Color.StorIQRed)</ID>
+    <ID>MaxLineLength:MoreScreen.kt$MoreItem("Storage History", "Track storage usage over time", Icons.Filled.History, Color.StorIQPurple)</ID>
+    <ID>MaxLineLength:MoreScreen.kt$colors = TopAppBarDefaults.topAppBarColors(containerColor = androidx.compose.material3.MaterialTheme.colorScheme.surface)</ID>
+    <ID>MaxLineLength:OnboardingScreen.kt$subtitle = "Storage analysis happens on your device\nwhenever possible. No data leaves your phone\nwithout your explicit consent."</ID>
+    <ID>MaxLineLength:PerformanceUtils.kt$PerformanceUtils$val height = retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)?.toIntOrNull()</ID>
+    <ID>MaxLineLength:PerformanceUtils.kt$PerformanceUtils$val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)</ID>
+    <ID>MaxLineLength:PerformanceUtils.kt$PerformanceUtils$val width = retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)?.toIntOrNull()</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$PermissionType.MANAGE_EXTERNAL_STORAGE -&gt; "StorIQ needs full storage access to scan all files, including downloads and documents, for comprehensive storage analysis."</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$PermissionType.MEDIA_AUDIO -&gt; "StorIQ needs access to your audio files to analyze storage usage and identify large audio files."</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$PermissionType.MEDIA_IMAGES -&gt; "StorIQ needs access to your photos to analyze storage usage, find duplicates, and identify large images."</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$PermissionType.MEDIA_VIDEO -&gt; "StorIQ needs access to your videos to analyze storage usage, find duplicates, and identify large videos."</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$PermissionType.PACKAGE_USAGE_STATS -&gt; "StorIQ needs usage stats access to detect unused apps and show when apps were last used."</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$PermissionType.POST_NOTIFICATIONS -&gt; "StorIQ can send notifications when background scans complete or when storage is running low."</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$PermissionType.USAGE_STATS -&gt; "StorIQ needs usage stats access to detect unused apps and show when apps were last used."</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$override suspend</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$status = if (granted) PermissionStatus.GRANTED else if (shouldShowRationale) PermissionStatus.DENIED else PermissionStatus.PERMANENTLY_DENIED</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$val granted = context.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == android.content.pm.PackageManager.PERMISSION_GRANTED</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$val granted = context.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == android.content.pm.PackageManager.PERMISSION_GRANTED</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$val granted = context.checkSelfPermission(permission) == android.content.pm.PackageManager.PERMISSION_GRANTED</ID>
+    <ID>MaxLineLength:PermissionManagerImpl.kt$PermissionManagerImpl$val mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.packageName)</ID>
+    <ID>MaxLineLength:PrivacyAudit.kt$PrivacyAudit$description = "Only necessary dangerous permissions granted (${grantedDangerous.size}/${dangerousPerms.size})"</ID>
+    <ID>MaxLineLength:StorageRepositoryImpl.kt$StorageRepositoryImpl$description = "Your storage is ${String.format("%.0f", usagePercent)}% full. Consider cleaning up space."</ID>
+    <ID>MaxLineLength:StorageRepositoryImpl.kt$StorageRepositoryImpl$return@withContext ScanSession(status = ScanStatus.IN_PROGRESS, errorMessage = "Scan already in progress")</ID>
+    <ID>MaxLineLength:StorageSnapshotDao.kt$StorageSnapshotDao$@Query("SELECT * FROM storage_snapshots WHERE timestamp &gt;= :startTime AND timestamp &lt;= :endTime ORDER BY timestamp ASC")</ID>
+    <ID>MaxLineLength:SwipeCleanGalleryScreen.kt$text = session?.let { "${it.deleteCandidates} for deletion (${StorageBreakdown.formatBytes(it.totalCandidateBytes)})" } ?: ""</ID>
+    <ID>MaxLineLength:SwipeCleanReviewScreen.kt$StatItem("Potential Recovery", StorageBreakdown.formatBytes(selectedSize), Icons.Filled.Delete, StorIQGreen)</ID>
+    <ID>MaxLineLength:SwipeCleanViewModel.kt$SwipeCleanViewModel$SwipeMediaType.PHOTOS_AND_VIDEOS -&gt; repository.getMediaByCategory(MediaCategory.IMAGES) + repository.getMediaByCategory(MediaCategory.VIDEOS)</ID>
+    <ID>MaxLineLength:SwipeCleanViewModel.kt$SwipeCleanViewModel$val allMedia = repository.getMediaByCategory(MediaCategory.IMAGES) + repository.getMediaByCategory(MediaCategory.VIDEOS)</ID>
+    <ID>NestedBlockDepth:FileScanner.kt$FileScanner$private fun scanMediaStore( uri: Uri, projection: Array&lt;String&gt;, selection: String?, selectionArgs: Array&lt;String&gt;?, scanSessionId: Long, mapCursor: (Cursor) -&gt; FileRecord ): MediaScanResult</ID>
+    <ID>NestedBlockDepth:MediaScanner.kt$MediaScanner$private fun scanMediaStore( uri: Uri, projection: Array&lt;String&gt;, scanSessionId: Long, mapCursor: (Cursor) -&gt; MediaRecord ): MediaScanResult</ID>
+    <ID>NestedBlockDepth:PerformanceUtils.kt$PerformanceUtils$private fun rotateBitmapIfNeeded(bitmap: Bitmap?, uri: Uri, context: android.content.Context): Bitmap?</ID>
+    <ID>NestedBlockDepth:SwipeCleanViewModel.kt$SwipeCleanViewModel$fun undoLastDecision()</ID>
+    <ID>NewLineAtEndOfFile:AccessibilityUtils.kt$com.storiq.core.ui.accessibility.AccessibilityUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:AlgorithmTests.kt$com.storiq.core.model.AlgorithmTests.kt</ID>
+    <ID>NewLineAtEndOfFile:AnalyzerScreen.kt$com.storiq.feature.analyzer.ui.AnalyzerScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:AnimationUtils.kt$com.storiq.core.ui.animations.AnimationUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:AppRecord.kt$com.storiq.core.model.AppRecord.kt</ID>
+    <ID>NewLineAtEndOfFile:AppRecordDao.kt$com.storiq.core.database.AppRecordDao.kt</ID>
+    <ID>NewLineAtEndOfFile:AppScanner.kt$com.storiq.core.media.AppScanner.kt</ID>
+    <ID>NewLineAtEndOfFile:AppsScreen.kt$com.storiq.feature.apps.ui.AppsScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:BatteryUtils.kt$com.storiq.core.util.BatteryUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:CleanScreen.kt$com.storiq.feature.cleanup.ui.CleanScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:CleanupItem.kt$com.storiq.core.model.CleanupItem.kt</ID>
+    <ID>NewLineAtEndOfFile:CleanupItemDao.kt$com.storiq.core.database.CleanupItemDao.kt</ID>
+    <ID>NewLineAtEndOfFile:Color.kt$com.storiq.core.ui.theme.Color.kt</ID>
+    <ID>NewLineAtEndOfFile:Converters.kt$com.storiq.core.database.converters.Converters.kt</ID>
+    <ID>NewLineAtEndOfFile:CoroutineDispatcherProvider.kt$com.storiq.core.util.CoroutineDispatcherProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:DashboardNavigation.kt$com.storiq.feature.dashboard.navigation.DashboardNavigation.kt</ID>
+    <ID>NewLineAtEndOfFile:DashboardScreen.kt$com.storiq.feature.dashboard.ui.DashboardScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:DashboardViewModel.kt$com.storiq.feature.dashboard.DashboardViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:DefaultCoroutineDispatcherProvider.kt$com.storiq.core.util.DefaultCoroutineDispatcherProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:DeletionManager.kt$com.storiq.core.storage.DeletionManager.kt</ID>
+    <ID>NewLineAtEndOfFile:DeviceCompatibility.kt$com.storiq.core.util.DeviceCompatibility.kt</ID>
+    <ID>NewLineAtEndOfFile:DuplicateGroup.kt$com.storiq.core.model.DuplicateGroup.kt</ID>
+    <ID>NewLineAtEndOfFile:DuplicateGroupDao.kt$com.storiq.core.database.DuplicateGroupDao.kt</ID>
+    <ID>NewLineAtEndOfFile:DuplicatesNavigation.kt$com.storiq.feature.duplicates.DuplicatesNavigation.kt</ID>
+    <ID>NewLineAtEndOfFile:DuplicatesScreen.kt$com.storiq.feature.duplicates.ui.DuplicatesScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:DuplicatesViewModel.kt$com.storiq.feature.duplicates.DuplicatesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ErrorHandling.kt$com.storiq.core.util.ErrorHandling.kt</ID>
+    <ID>NewLineAtEndOfFile:FileRecord.kt$com.storiq.core.model.FileRecord.kt</ID>
+    <ID>NewLineAtEndOfFile:FileRecordDao.kt$com.storiq.core.database.FileRecordDao.kt</ID>
+    <ID>NewLineAtEndOfFile:FileScanner.kt$com.storiq.core.media.FileScanner.kt</ID>
+    <ID>NewLineAtEndOfFile:HistoryNavigation.kt$com.storiq.feature.history.HistoryNavigation.kt</ID>
+    <ID>NewLineAtEndOfFile:HistoryScreen.kt$com.storiq.feature.history.ui.HistoryScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:HistoryViewModel.kt$com.storiq.feature.history.HistoryViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:HistoryViewModelTest.kt$com.storiq.feature.history.HistoryViewModelTest.kt</ID>
+    <ID>NewLineAtEndOfFile:InitialScanScreen.kt$com.storiq.feature.onboarding.ui.InitialScanScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:LargeFilesNavigation.kt$com.storiq.feature.largefiles.LargeFilesNavigation.kt</ID>
+    <ID>NewLineAtEndOfFile:LargeFilesScreen.kt$com.storiq.feature.largefiles.ui.LargeFilesScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:LargeFilesViewModel.kt$com.storiq.feature.largefiles.LargeFilesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MainActivity.kt$com.storiq.MainActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:MediaCategory.kt$com.storiq.core.model.MediaCategory.kt</ID>
+    <ID>NewLineAtEndOfFile:MediaRecord.kt$com.storiq.core.model.MediaRecord.kt</ID>
+    <ID>NewLineAtEndOfFile:MediaRecordDao.kt$com.storiq.core.database.MediaRecordDao.kt</ID>
+    <ID>NewLineAtEndOfFile:MediaScanner.kt$com.storiq.core.media.MediaScanner.kt</ID>
+    <ID>NewLineAtEndOfFile:ModelTests.kt$com.storiq.core.model.ModelTests.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreScreen.kt$com.storiq.feature.more.ui.MoreScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:OnboardingNavigation.kt$com.storiq.feature.onboarding.OnboardingNavigation.kt</ID>
+    <ID>NewLineAtEndOfFile:OnboardingScreen.kt$com.storiq.feature.onboarding.ui.OnboardingScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:PerformanceUtils.kt$com.storiq.core.util.PerformanceUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:PermissionManager.kt$com.storiq.core.permissions.PermissionManager.kt</ID>
+    <ID>NewLineAtEndOfFile:PermissionManagerImpl.kt$com.storiq.core.permissions.PermissionManagerImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:PrivacyAudit.kt$com.storiq.core.util.PrivacyAudit.kt</ID>
+    <ID>NewLineAtEndOfFile:Recommendation.kt$com.storiq.core.model.Recommendation.kt</ID>
+    <ID>NewLineAtEndOfFile:RecommendationDao.kt$com.storiq.core.database.RecommendationDao.kt</ID>
+    <ID>NewLineAtEndOfFile:RepositoryTests.kt$com.storiq.core.storage.RepositoryTests.kt</ID>
+    <ID>NewLineAtEndOfFile:ScanSession.kt$com.storiq.core.model.ScanSession.kt</ID>
+    <ID>NewLineAtEndOfFile:ScanSessionDao.kt$com.storiq.core.database.ScanSessionDao.kt</ID>
+    <ID>NewLineAtEndOfFile:ScanWorker.kt$com.storiq.core.media.ScanWorker.kt</ID>
+    <ID>NewLineAtEndOfFile:ScannerTests.kt$com.storiq.core.media.ScannerTests.kt</ID>
+    <ID>NewLineAtEndOfFile:Shape.kt$com.storiq.core.ui.theme.Shape.kt</ID>
+    <ID>NewLineAtEndOfFile:StateComponents.kt$com.storiq.core.ui.components.StateComponents.kt</ID>
+    <ID>NewLineAtEndOfFile:StorIQApplication.kt$com.storiq.StorIQApplication.kt</ID>
+    <ID>NewLineAtEndOfFile:StorIQDatabase.kt$com.storiq.core.database.StorIQDatabase.kt</ID>
+    <ID>NewLineAtEndOfFile:StorageRepository.kt$com.storiq.core.storage.StorageRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:StorageRepositoryImpl.kt$com.storiq.core.storage.StorageRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:StorageSnapshot.kt$com.storiq.core.model.StorageSnapshot.kt</ID>
+    <ID>NewLineAtEndOfFile:StorageSnapshotDao.kt$com.storiq.core.database.StorageSnapshotDao.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeCleanGalleryScreen.kt$com.storiq.feature.swipeclean.ui.SwipeCleanGalleryScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeCleanNavigation.kt$com.storiq.feature.swipeclean.SwipeCleanNavigation.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeCleanReviewScreen.kt$com.storiq.feature.swipeclean.ui.SwipeCleanReviewScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeCleanTests.kt$com.storiq.core.model.SwipeCleanTests.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeCleanViewModel.kt$com.storiq.feature.swipeclean.SwipeCleanViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeDecisionRecordDao.kt$com.storiq.core.database.SwipeDecisionRecordDao.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeSession.kt$com.storiq.core.model.SwipeSession.kt</ID>
+    <ID>NewLineAtEndOfFile:SwipeSessionDao.kt$com.storiq.core.database.SwipeSessionDao.kt</ID>
+    <ID>NewLineAtEndOfFile:Theme.kt$com.storiq.core.ui.theme.Theme.kt</ID>
+    <ID>NewLineAtEndOfFile:Typography.kt$com.storiq.core.ui.theme.Typography.kt</ID>
+    <ID>ReturnCount:AppScanner.kt$AppScanner$private fun getAppStorageSize( packageName: String, storageStatsManager: StorageStatsManager?, storageManager: StorageManager? ): Triple&lt;Long, Long, Long&gt;</ID>
+    <ID>ReturnCount:AppScanner.kt$AppScanner$private fun getDirSize(file: java.io.File): Long</ID>
+    <ID>SwallowedException:AppScanner.kt$AppScanner$e: Exception</ID>
+    <ID>SwallowedException:DashboardViewModel.kt$DashboardViewModel$e: Exception</ID>
+    <ID>SwallowedException:DeletionManager.kt$DeletionManager$e: Exception</ID>
+    <ID>SwallowedException:DuplicatesViewModel.kt$DuplicatesViewModel$e: Exception</ID>
+    <ID>SwallowedException:FileScanner.kt$FileScanner$e: Exception</ID>
+    <ID>SwallowedException:HistoryViewModel.kt$HistoryViewModel$e: Exception</ID>
+    <ID>SwallowedException:LargeFilesViewModel.kt$LargeFilesViewModel$e: Exception</ID>
+    <ID>SwallowedException:MediaScanner.kt$MediaScanner$e: Exception</ID>
+    <ID>SwallowedException:PerformanceUtils.kt$PerformanceUtils$e: Exception</ID>
+    <ID>SwallowedException:PrivacyAudit.kt$PrivacyAudit$e: PackageManager.NameNotFoundException</ID>
+    <ID>SwallowedException:ScanWorker.kt$ScanWorker$e: Exception</ID>
+    <ID>SwallowedException:SwipeCleanViewModel.kt$SwipeCleanViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AppScanner.kt$AppScanner$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:DashboardViewModel.kt$DashboardViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:DeletionManager.kt$DeletionManager$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:DeviceCompatibility.kt$DeviceCompatibility$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:DuplicatesViewModel.kt$DuplicatesViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ErrorHandling.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:FileScanner.kt$FileScanner$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:HistoryViewModel.kt$HistoryViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:LargeFilesViewModel.kt$LargeFilesViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MediaScanner.kt$MediaScanner$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:PerformanceUtils.kt$PerformanceUtils$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ScanWorker.kt$ScanWorker$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:StorageRepositoryImpl.kt$StorageRepositoryImpl$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:SwipeCleanViewModel.kt$SwipeCleanViewModel$e: Exception</ID>
+    <ID>TooManyFunctions:AccessibilityUtils.kt$AccessibilityUtils</ID>
+    <ID>TooManyFunctions:AppRecordDao.kt$AppRecordDao</ID>
+    <ID>TooManyFunctions:Converters.kt$Converters</ID>
+    <ID>TooManyFunctions:DuplicatesViewModel.kt$DuplicatesViewModel : ViewModel</ID>
+    <ID>TooManyFunctions:MediaRecordDao.kt$MediaRecordDao</ID>
+    <ID>TooManyFunctions:PermissionManagerImpl.kt$PermissionManagerImpl : PermissionManager</ID>
+    <ID>TooManyFunctions:StorageRepository.kt$StorageRepository</ID>
+    <ID>TooManyFunctions:StorageRepositoryImpl.kt$StorageRepositoryImpl : StorageRepository</ID>
+    <ID>TooManyFunctions:SwipeCleanViewModel.kt$SwipeCleanViewModel : ViewModel</ID>
+    <ID>UnusedParameter:AnimationUtils.kt$AnimationUtils$baseDelay: Int = 50</ID>
+    <ID>UnusedParameter:AppScanner.kt$AppScanner$scanSessionId: Long</ID>
+    <ID>UnusedParameter:AppScanner.kt$AppScanner$storageManager: StorageManager?</ID>
+    <ID>UnusedParameter:DashboardScreen.kt$onNavigateToApps: () -&gt; Unit = {}</ID>
+    <ID>UnusedParameter:DuplicatesScreen.kt$onSelectionChange: (Boolean) -&gt; Unit</ID>
+    <ID>UnusedParameter:FileScanner.kt$FileScanner$scanSessionId: Long</ID>
+    <ID>UnusedParameter:LargeFilesViewModel.kt$LargeFilesViewModel$selected: Boolean</ID>
+    <ID>UnusedParameter:LargeFilesViewModel.kt$LargeFilesViewModel$uri: String</ID>
+    <ID>UnusedParameter:MediaScanner.kt$MediaScanner$scanSessionId: Long</ID>
+    <ID>UnusedParameter:MoreScreen.kt$onNavigateToDeviceInfo: () -&gt; Unit = {}</ID>
+    <ID>UnusedParameter:SwipeCleanGalleryScreen.kt$media: MediaRecord</ID>
+    <ID>UnusedParameter:SwipeCleanGalleryScreen.kt$onBack: () -&gt; Unit</ID>
+    <ID>UnusedParameter:SwipeCleanReviewScreen.kt$onSelectionChange: (Boolean) -&gt; Unit</ID>
+    <ID>UnusedPrivateProperty:DuplicatesScreen.kt$val isImage = group.category == com.storiq.core.model.MediaCategory.IMAGES</ID>
+    <ID>UnusedPrivateProperty:HistoryScreen.kt$val minY = 0f</ID>
+    <ID>UnusedPrivateProperty:ScannerTests.kt$StorageStatsTest$input</ID>
+    <ID>UnusedPrivateProperty:StorIQApplication.kt$StorIQApplication$private val dataStore by lazy { preferencesDataStore(name = "storiq_preferences") }</ID>
+    <ID>UnusedPrivateProperty:StorageRepositoryImpl.kt$StorageRepositoryImpl$private val preferencesDataStore: PreferencesDataStore</ID>
+    <ID>UnusedPrivateProperty:StorageSnapshotDao.kt$StorageSnapshotDao$val countQuery = "SELECT COUNT(*) FROM storage_snapshots"</ID>
+    <ID>UnusedPrivateProperty:SwipeCleanReviewScreen.kt$val keptItems = viewModel.getKeptItems()</ID>
+    <ID>WildcardImport:AlgorithmTests.kt$import org.junit.Assert.*</ID>
+    <ID>WildcardImport:HistoryViewModelTest.kt$import org.junit.Assert.*</ID>
+    <ID>WildcardImport:HistoryViewModelTest.kt$import org.mockito.Mockito.*</ID>
+    <ID>WildcardImport:ModelTests.kt$import org.junit.Assert.*</ID>
+    <ID>WildcardImport:RepositoryTests.kt$import com.storiq.core.model.*</ID>
+    <ID>WildcardImport:RepositoryTests.kt$import org.mockito.Mockito.*</ID>
+    <ID>WildcardImport:ScannerTests.kt$import org.junit.Assert.*</ID>
+    <ID>WildcardImport:ScannerTests.kt$import org.mockito.Mockito.*</ID>
+    <ID>WildcardImport:StorIQDatabase.kt$import com.storiq.core.model.*</ID>
+    <ID>WildcardImport:StorageRepository.kt$import com.storiq.core.model.*</ID>
+    <ID>WildcardImport:StorageRepositoryImpl.kt$import com.storiq.core.model.*</ID>
+    <ID>WildcardImport:SwipeCleanTests.kt$import org.junit.Assert.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
