@@ -6,6 +6,11 @@ plugins {
     alias(libs.plugins.detekt)
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 android {
     namespace = "com.storiq"
     compileSdk = 34
