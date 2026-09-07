@@ -81,7 +81,7 @@ dependencies {
     implementation(libs.androidx.compose.material3.window.size)
 
     // Material3 View (for XML themes)
-    implementation(libs.androidx.material3)
+    implementation(libs.material3.view)
 
     // Coil
     implementation(enforcedPlatform(libs.coil.bom))

@@ -26,7 +26,7 @@ material3 = "1.3.0-alpha01"
 composeCompiler = "1.5.11"
 
 # Material3 View (for XML themes)
-material3View = "1.3.0-alpha01"
+material3View = "1.12.0"
 
 # Navigation
 navigation = "2.7.7"
@@ -73,7 +73,8 @@ androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-compose-material3-window-size = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
-androidx-material3 = { module = "androidx.material3:material3", version.ref = "material3View" }
+# Material3 View (for XML themes)
+material3-view = { module = "com.google.android.material:material", version.ref = "material3View" }
 
 # Navigation
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
