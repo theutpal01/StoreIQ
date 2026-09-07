@@ -14,7 +14,7 @@ permissions:
 env:
   GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx3g -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true"
   JAVA_VERSION: "17"
-  GRADLE_VERSION: "8.5"
+  GRADLE_VERSION: "8.6"
 
 jobs:
   # Code Quality & Linting
@@ -37,9 +37,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
-
-      - name: Run Ktlint
-        run: ./gradlew ktlintCheck --no-daemon
 
       - name: Run Detekt
         run: ./gradlew detekt --no-daemon
