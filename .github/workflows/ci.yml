@@ -101,7 +101,7 @@ jobs:
           retention-days: 7
 
       - name: Report Coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v7
         if: always()
         with:
           files: ./app/build/reports/jacoco/testDebugUnitTestReport/*.xml
