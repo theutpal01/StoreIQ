@@ -8,8 +8,8 @@ jvmTarget = "17"
 
 # Kotlin
 kotlin = "1.9.23"
-kotlinCoroutines = "1.7.3"
-kotlinSerialization = "1.6.3"
+kotlinCoroutines = "1.11.0"
+kotlinSerialization = "1.11.0"
 kotlinSerializationPlugin = "1.9.22"
 
 # AndroidX Core
@@ -50,7 +50,7 @@ kotlinTest = "1.9.22"
 mockito = "5.11.0"
 mockitoKotlin = "5.1.0"
 archCoreTesting = "2.2.0"
-coroutinesTest = "1.7.3"
+coroutinesTest = "1.11.0"
 espresso = "3.5.1"
 extJunit = "1.2.1"
 
