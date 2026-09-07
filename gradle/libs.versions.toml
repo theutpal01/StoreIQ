@@ -39,6 +39,7 @@ workManager = "2.9.0"
 
 # Coil
 coil = "2.6.0"
+coilBom = "2.6.0"
 
 # Testing
 junit = "4.13.2"
@@ -94,6 +95,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinSerialization" }
 
 # Coil
+coil-bom = { module = "io.coil-kt:coil-bom", version.ref = "coilBom" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 coil-network-okhttp = { module = "io.coil-kt:coil-network-okhttp", version.ref = "coil" }
 
