@@ -113,7 +113,7 @@ dependencies {
     // Room Database
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    ksp("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.8.5")
 
     // DataStore
     implementation(libs.androidx.datastore.preferences)
