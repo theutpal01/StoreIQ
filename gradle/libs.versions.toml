@@ -47,7 +47,7 @@ coilBom = "2.6.0"
 # Testing
 junit = "4.13.2"
 kotlinTest = "1.9.22"
-mockito = "5.11.0"
+mockito = "5.24.0"
 mockitoKotlin = "5.1.0"
 archCoreTesting = "2.2.0"
 coroutinesTest = "1.7.3"
